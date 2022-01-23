@@ -37,7 +37,7 @@ namespace RSI_test
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cbCandlePeriod = new System.Windows.Forms.ComboBox();
+            this.CandlePeriod = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cbUpdateTime = new System.Windows.Forms.ComboBox();
@@ -88,6 +88,8 @@ namespace RSI_test
             // 
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "EUR_USDT"});
             this.comboBox1.Location = new System.Drawing.Point(548, 32);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(88, 21);
@@ -104,11 +106,11 @@ namespace RSI_test
             this.label5.TabIndex = 12;
             this.label5.Text = "MARKET";
             // 
-            // cbCandlePeriod
+            // CandlePeriod
             // 
-            this.cbCandlePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbCandlePeriod.FormattingEnabled = true;
-            this.cbCandlePeriod.Items.AddRange(new object[] {
+            this.CandlePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CandlePeriod.FormattingEnabled = true;
+            this.CandlePeriod.Items.AddRange(new object[] {
             "1m",
             "3m",
             "5m",
@@ -124,10 +126,10 @@ namespace RSI_test
             "3d",
             "1w",
             "1M"});
-            this.cbCandlePeriod.Location = new System.Drawing.Point(578, 130);
-            this.cbCandlePeriod.Name = "cbCandlePeriod";
-            this.cbCandlePeriod.Size = new System.Drawing.Size(60, 21);
-            this.cbCandlePeriod.TabIndex = 15;
+            this.CandlePeriod.Location = new System.Drawing.Point(578, 130);
+            this.CandlePeriod.Name = "CandlePeriod";
+            this.CandlePeriod.Size = new System.Drawing.Size(60, 21);
+            this.CandlePeriod.TabIndex = 15;
             // 
             // label7
             // 
@@ -179,7 +181,7 @@ namespace RSI_test
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cbUpdateTime);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.cbCandlePeriod);
+            this.Controls.Add(this.CandlePeriod);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
@@ -199,7 +201,7 @@ namespace RSI_test
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbCandlePeriod;
+        private System.Windows.Forms.ComboBox CandlePeriod;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbUpdateTime;
