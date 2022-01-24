@@ -35,6 +35,8 @@ namespace RSI_test
 
         private async void Form1_LoadAsync(object sender, EventArgs e)
         {
+            timer1.Start();
+
             cbUpdateTime.Text = "300000";
             CandlePeriod.Text = "1d";
 
@@ -91,7 +93,7 @@ namespace RSI_test
 
         public async Task<string> LoadUrlAsText(string url)
         {
-                            var request = WebRequest.Create(url);
+                var request = WebRequest.Create(url);
                 using (var response = await request.GetResponseAsync())
                 {
                     using (var stream = response.GetResponseStream())
