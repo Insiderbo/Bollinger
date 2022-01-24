@@ -19,11 +19,9 @@ namespace RSI_test
 {
     public partial class Form1 : Form
     {
-        string ccy;
-        string candle_period;
-        string interval;
-        readonly Dictionary<string, HashSet<string>> pairs = new Dictionary<string, HashSet<string>>();
-        readonly Dictionary<string, DataGridViewRow> rows = new Dictionary<string, DataGridViewRow>();
+        
+        readonly Dictionary<string, HashSet<string>> pairs = new Dictionary<string, HashSet<string>>(); // вся информация по парам
+        readonly Dictionary<string, DataGridViewRow> rows = new Dictionary<string, DataGridViewRow>();// 
         readonly Dictionary<string, List<Candle>> candles = new Dictionary<string, List<Candle>>();
         private int period = 1;
         private int period_slow = 3;
@@ -37,8 +35,10 @@ namespace RSI_test
 
         private async void Form1_LoadAsync(object sender, EventArgs e)
         {
+            timer1.Start();
+
             cbUpdateTime.Text = "300000";
-            cbCandlePeriod.Text = "1d";
+            CandlePeriod.Text = "1d";
 
             
             pairs["EUR"] = new HashSet<string>();
@@ -59,6 +59,11 @@ namespace RSI_test
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.RowHeadersVisible = false;
 
+            await LoadAllCandles(comboBox1.Text);
+            await LoadOneCandle(comboBox1.Text);
+
+
+            timer1.Start();
         }
 
 
@@ -88,7 +93,7 @@ namespace RSI_test
 
         public async Task<string> LoadUrlAsText(string url)
         {
-                            var request = WebRequest.Create(url);
+                var request = WebRequest.Create(url);
                 using (var response = await request.GetResponseAsync())
                 {
                     using (var stream = response.GetResponseStream())
@@ -112,13 +117,13 @@ namespace RSI_test
 
         public async Task LoadAllCandles(string pair)
         {
-            candles[pair] = await LoadCandles(pair, candle_period, 213);
+            candles[pair] = await LoadCandles(pair, CandlePeriod.Items.ToString(), 213);
             UpdateRow(pair);
         }
 
         public async Task LoadOneCandle(string pair)
         {
-            var all = await LoadCandles(pair, candle_period, 1);
+            var all = await LoadCandles(pair, CandlePeriod.Items.ToString(), 1);
             var new_last = all.Single();
             var old_last = candles[pair].Last();
             candles[pair].RemoveAt(candles[pair].Count - 1);
@@ -150,6 +155,7 @@ namespace RSI_test
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            
 
         }
     }
