@@ -101,22 +101,42 @@ namespace BollingerNewVers
 
         public double Bollenger(dynamic d)
         {
-            double[] tp = new double[20];
+            int colvoSwitch = d.Count;
+            double[] tp = new double[colvoSwitch];
 
-            for (int i = 0; i < 20; i++) //[JSON].[0].[2]
+            for (int i = 0; i < colvoSwitch; i++) //[JSON].[0].[2]
             {
-                double sum = Convert.ToDouble(d[i][2]) + Convert.ToDouble(d[i][3]) + Convert.ToDouble(d[i][4]);
-                tp[i] = sum/3;
+                tp[i] = Convert.ToDouble(d[i][4]);                
             }
 
-            double rez = 0f;
+            double sred = 0f;
 
             foreach (var item in tp)
             {
-                rez += item;
+                sred += item;
+            }
+             sred/= colvoSwitch;
+
+            for (int i = 0; i < colvoSwitch; i++) //[JSON].[0].[2]
+            {
+                tp[i] -= sred;
+                tp[i] = Math.Pow(tp[i], 2);
             }
 
-            return rez/20;
+            double sum = 0;
+
+            foreach (var item in tp)
+            {
+                sum += item;
+            }
+
+            Math.Sqrt(sum);
+            return sum / (colvoSwitch-1);
+
+
+
+
+            return 0;
         }
 
       
