@@ -36,20 +36,21 @@ namespace BollingerNewVers
         private async void CycleWork()
         {
             while (true)
-            {
-                namePara = comboBox1.Text;
-                period = Convert.ToInt32(comboBox2.Text);
-
-                if (namePara == "")
+            {   
+                if (comboBox1.Text == "")
                 {
                     MessageBox.Show("No order");
                     return;
                 }
-                if (period == 0)
+                if (comboBox2.Text == "")
                 {
                     MessageBox.Show("No period");
                     return;
                 }
+
+                namePara = comboBox1.Text;
+                period = Convert.ToInt32(comboBox2.Text);
+
                 button1.Enabled = false;
                 await Get_Pairs();
                 await Task.Delay(period * 1000);
@@ -58,34 +59,6 @@ namespace BollingerNewVers
         }
 
 
-
-        public async Task Get_Pairs()
-        {           
-            dynamic allPares = JsonConvert.DeserializeObject(await LoadUrlAsText("https://api.binance.com/api/v3/exchangeInfo"));
-
-
-            int i = 0;
-
-            dataGridView1.Rows.Clear();
-
-            foreach (var item in allPares.symbols)
-            {
-                
-                if (item.quoteAsset == namePara)//[JSON].symbols.[0].quoteAsset
-                {
-                    i++;
-                    string para = item.symbol.ToString();
-
-                    var allOrder =await LoadUrlAsText($"https://api.binance.com/api/v1/klines?symbol={para}&interval=5m&limit=20");
-
-                    dataGridView1.Rows.Add(item.symbol, Bollenger(JsonConvert.DeserializeObject(allOrder)));
-
-                }
-                textBox1.Text =i.ToString();
-            }
-            
-            
-        }
         public async Task<string> LoadUrlAsText(string url)
         {
             var request = WebRequest.Create(url);
@@ -99,14 +72,44 @@ namespace BollingerNewVers
             }
         }
 
-        public double Bollenger(dynamic d)
+        public async Task Get_Pairs()
+        {           
+            dynamic allPares = JsonConvert.DeserializeObject(await LoadUrlAsText("https://testnet.binancefuture.com/fapi/v1/exchangeInfo"));
+
+
+            int i = 0;
+
+            dataGridView1.Rows.Clear();
+
+            foreach (var item in allPares.symbols)
+            {
+                
+                if (item.quoteAsset == namePara)//[JSON].symbols.[0].quoteAsset
+                {
+                    i++;
+                    string para = item.symbol.ToString();
+                    Bollenger(para);
+
+                }
+                textBox1.Text =i.ToString();
+            }
+            
+            
+        }
+        
+
+        public async void Bollenger(string para)
         {
-            int colvoSwitch = d.Count;
+            dynamic allOrder = JsonConvert.DeserializeObject(await LoadUrlAsText($"https://testnet.binancefuture.com/fapi/v1/klines?symbol={para}&interval=5m&limit=20"));
+
+           
+
+            int colvoSwitch = allOrder.Count;
             double[] tp = new double[colvoSwitch];
 
             for (int i = 0; i < colvoSwitch; i++) //[JSON].[0].[2]
             {
-                tp[i] = Convert.ToDouble(d[i][4]);                
+                tp[i] = Convert.ToDouble(allOrder[i][4]);                
             }
 
             double sred = 0f;
@@ -131,12 +134,9 @@ namespace BollingerNewVers
             }
 
             Math.Sqrt(sum);
-            return sum / (colvoSwitch-1);
+            
 
-
-
-
-            return 0;
+            dataGridView1.Rows.Add(para, (sum / (colvoSwitch-1))/2);
         }
 
       
