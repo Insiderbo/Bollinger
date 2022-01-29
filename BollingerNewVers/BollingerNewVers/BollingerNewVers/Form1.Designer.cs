@@ -31,13 +31,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.para = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Indicator = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.para = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Indicator = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -46,7 +46,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(298, 209);
+            this.button1.Location = new System.Drawing.Point(294, 122);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(190, 30);
             this.button1.TabIndex = 0;
@@ -74,6 +74,17 @@
             this.dataGridView1.Size = new System.Drawing.Size(274, 298);
             this.dataGridView1.TabIndex = 0;
             // 
+            // para
+            // 
+            this.para.HeaderText = "para";
+            this.para.Name = "para";
+            // 
+            // Indicator
+            // 
+            this.Indicator.HeaderText = "Indicator";
+            this.Indicator.Name = "Indicator";
+            this.Indicator.Width = 130;
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -97,7 +108,7 @@
             "1800",
             "3600",
             "7200"});
-            this.comboBox2.Location = new System.Drawing.Point(6, 19);
+            this.comboBox2.Location = new System.Drawing.Point(8, 19);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(182, 21);
             this.comboBox2.TabIndex = 3;
@@ -126,23 +137,12 @@
             // 
             this.groupBox2.Controls.Add(this.comboBox2);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.groupBox2.Location = new System.Drawing.Point(292, 86);
+            this.groupBox2.Location = new System.Drawing.Point(292, 67);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(196, 49);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Period";
-            // 
-            // para
-            // 
-            this.para.HeaderText = "para";
-            this.para.Name = "para";
-            // 
-            // Indicator
-            // 
-            this.Indicator.HeaderText = "Indicator";
-            this.Indicator.Name = "Indicator";
-            this.Indicator.Width = 130;
             // 
             // Form1
             // 

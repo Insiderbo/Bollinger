@@ -46,10 +46,10 @@ namespace NetTrader.Indicator
 
             for (int i = 0; i < OhlcList.Count; i++)
             {
-                OhlcList[i].Close = (OhlcList[i].High + OhlcList[i].Low + OhlcList[i].Close) / 3;
+                OhlcList[i].Close = (OhlcList[i].High + OhlcList[i].Low + OhlcList[i].Close) / 3;// рассчитываем средние цены закрытия
 
-                totalAverage += OhlcList[i].Close;
-                totalSquares += Math.Pow(OhlcList[i].Close, 2);
+                totalAverage += OhlcList[i].Close;//итоговая цена
+                totalSquares += Math.Pow(OhlcList[i].Close, 2);//возводим в квадрат средние цены закрытия
 
                 if (i >= Period - 1)
                 {
@@ -78,6 +78,7 @@ namespace NetTrader.Indicator
                     bollingerBandSerie.BPercent.Add(null);
                 }
             }
+
 
             return bollingerBandSerie;
         }

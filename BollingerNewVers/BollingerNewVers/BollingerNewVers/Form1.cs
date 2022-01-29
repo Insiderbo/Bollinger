@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -12,7 +13,6 @@ namespace BollingerNewVers
     {
         private string namePara;
         private int period;
-        private string timerTick;
 
         public Form1()
         {
@@ -88,7 +88,9 @@ namespace BollingerNewVers
                 {
                     i++;
                     string para = item.symbol.ToString();
-                    Bollenger(para);
+                    dynamic allOrder = JsonConvert.DeserializeObject(await LoadUrlAsText($"https://testnet.binancefuture.com/fapi/v1/klines?symbol={para}&interval=15m&limit=21"));
+
+                    dataGridView1.Rows.Add(para, Bollenger(allOrder));
 
                 }
                 textBox1.Text =i.ToString();
@@ -98,45 +100,24 @@ namespace BollingerNewVers
         }
         
 
-        public async void Bollenger(string para)
+        public string Bollenger(dynamic allOrder)
         {
-            dynamic allOrder = JsonConvert.DeserializeObject(await LoadUrlAsText($"https://testnet.binancefuture.com/fapi/v1/klines?symbol={para}&interval=5m&limit=20"));
-
-           
-
-            int colvoSwitch = allOrder.Count;
-            double[] tp = new double[colvoSwitch];
-
-            for (int i = 0; i < colvoSwitch; i++) //[JSON].[0].[2]
-            {
-                tp[i] = Convert.ToDouble(allOrder[i][4]);                
-            }
-
-            double sred = 0f;
-
-            foreach (var item in tp)
-            {
-                sred += item;
-            }
-             sred/= colvoSwitch;
-
-            for (int i = 0; i < colvoSwitch; i++) //[JSON].[0].[2]
-            {
-                tp[i] -= sred;
-                tp[i] = Math.Pow(tp[i], 2);
-            }
-
-            double sum = 0;
-
-            foreach (var item in tp)
-            {
-                sum += item;
-            }
-
-            Math.Sqrt(sum);
             
+            double totalAverage = 0;
+            double totalSquares = 0;
 
-            dataGridView1.Rows.Add(para, (sum / (colvoSwitch-1))/2);
+            //[JSON].[0].[2]
+            foreach (dynamic item in allOrder)
+            {
+                double closePrice= (Convert.ToDouble(item[2]) + Convert.ToDouble(item[3]) + Convert.ToDouble(item[4]))/3;
+                totalAverage += closePrice;//итоговая цена
+                totalSquares += Math.Pow(closePrice, 2);//возводим в квадрат средние цены закрытия
+            }
+            double average = totalAverage / allOrder.Count;
+            double stdev = Math.Sqrt((totalSquares - Math.Pow(totalAverage, 2) / allOrder.Count) / allOrder.Count);
+            double up = average + 2 * stdev;
+
+            return up.ToString();
         }
 
       
