@@ -106,7 +106,7 @@ namespace BollingerNewVers
             //[JSON].[0].[2]
             foreach (dynamic item in allOrder)
             {
-                double closePrice= (Convert.ToDouble(item[2]) + Convert.ToDouble(item[3]) + Convert.ToDouble(item[4]))/3;
+                double closePrice= (Convert.ToDouble(item[1]) + Convert.ToDouble(item[2]) + Convert.ToDouble(item[3]))/3;
                 totalAverage += closePrice;//итоговая цена
                 totalSquares += Math.Pow(closePrice, 2);//возводим в квадрат средние цены закрытия
             }
