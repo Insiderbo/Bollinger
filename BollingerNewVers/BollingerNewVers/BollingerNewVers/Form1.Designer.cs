@@ -32,21 +32,27 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.para = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Indicator = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.up = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.down = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bandWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(294, 122);
+            this.button1.Location = new System.Drawing.Point(622, 162);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(190, 30);
             this.button1.TabIndex = 0;
@@ -59,7 +65,7 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(274, 298);
+            this.panel1.Size = new System.Drawing.Size(587, 281);
             this.panel1.TabIndex = 1;
             // 
             // dataGridView1
@@ -67,11 +73,13 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.para,
-            this.Indicator});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.up,
+            this.avg,
+            this.down,
+            this.bandWidth});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(274, 298);
+            this.dataGridView1.Size = new System.Drawing.Size(572, 268);
             this.dataGridView1.TabIndex = 0;
             // 
             // para
@@ -79,22 +87,37 @@
             this.para.HeaderText = "para";
             this.para.Name = "para";
             // 
-            // Indicator
+            // up
             // 
-            this.Indicator.HeaderText = "Indicator";
-            this.Indicator.Name = "Indicator";
-            this.Indicator.Width = 130;
+            this.up.HeaderText = "UP";
+            this.up.Name = "up";
+            this.up.Width = 130;
             // 
-            // comboBox1
+            // avg
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "USDT",
-            "BTC"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 18);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
+            this.avg.HeaderText = "AVG";
+            this.avg.Name = "avg";
+            // 
+            // down
+            // 
+            this.down.HeaderText = "DOWN";
+            this.down.Name = "down";
+            // 
+            // bandWidth
+            // 
+            this.bandWidth.HeaderText = "Band Width";
+            this.bandWidth.Name = "bandWidth";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.groupBox2.Location = new System.Drawing.Point(614, 57);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(196, 49);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Period";
             // 
             // comboBox2
             // 
@@ -113,6 +136,18 @@
             this.comboBox2.Size = new System.Drawing.Size(182, 21);
             this.comboBox2.TabIndex = 3;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.groupBox1.Location = new System.Drawing.Point(614, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(196, 49);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Order";
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(133, 18);
@@ -121,47 +156,54 @@
             this.textBox1.TabIndex = 5;
             this.textBox1.Text = "0";
             // 
-            // groupBox1
+            // comboBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.groupBox1.Location = new System.Drawing.Point(292, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(196, 49);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Order";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "USDT",
+            "BTC"});
+            this.comboBox1.Location = new System.Drawing.Point(6, 18);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 2;
             // 
-            // groupBox2
+            // textBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.groupBox2.Location = new System.Drawing.Point(292, 67);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(196, 49);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Period";
+            this.textBox2.Location = new System.Drawing.Point(33, 10);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(135, 20);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Location = new System.Drawing.Point(622, 113);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(190, 43);
+            this.panel2.TabIndex = 9;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 319);
+            this.ClientSize = new System.Drawing.Size(821, 313);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "BollingerBbands";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -177,7 +219,12 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridViewTextBoxColumn para;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Indicator;
+        private System.Windows.Forms.DataGridViewTextBoxColumn up;
+        private System.Windows.Forms.DataGridViewTextBoxColumn avg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn down;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bandWidth;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

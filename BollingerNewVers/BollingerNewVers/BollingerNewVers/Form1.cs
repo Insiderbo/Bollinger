@@ -88,10 +88,7 @@ namespace BollingerNewVers
                 {
                     i++;
                     string para = item.symbol.ToString();
-                    dynamic allOrder = JsonConvert.DeserializeObject(await LoadUrlAsText($"https://testnet.binancefuture.com/fapi/v1/klines?symbol={para}&interval=15m&limit=21"));
-
-                    dataGridView1.Rows.Add(para, Bollenger(allOrder));
-
+                    Bollenger(para);
                 }
                 textBox1.Text =i.ToString();
             }
@@ -100,9 +97,9 @@ namespace BollingerNewVers
         }
         
 
-        public string Bollenger(dynamic allOrder)
+        public async void Bollenger(string para)
         {
-            
+            dynamic allOrder = JsonConvert.DeserializeObject(await LoadUrlAsText($"https://testnet.binancefuture.com/fapi/v1/klines?symbol={para}&interval=15m&limit=21"));
             double totalAverage = 0;
             double totalSquares = 0;
 
@@ -116,10 +113,21 @@ namespace BollingerNewVers
             double average = totalAverage / allOrder.Count;
             double stdev = Math.Sqrt((totalSquares - Math.Pow(totalAverage, 2) / allOrder.Count) / allOrder.Count);
             double up = average + 2 * stdev;
+            double down = average - 2 * stdev;
+            double bandWidth = (up - down) / average;
 
-            return up.ToString();
+            dataGridView1.Rows.Add(para, up, average, down, bandWidth);
+            int row = dataGridView1.CurrentCell.RowIndex;
         }
 
-      
+        static void Telegramm(string message)
+        {
+            var path = textBox2.Text;
+            var p = new System.Diagnostics.Process();
+            p.StartInfo.FileName = path;
+            p.StartInfo.Arguments = $"\"{message}\"";
+            p.Start();
+        }
+
     }
 }
