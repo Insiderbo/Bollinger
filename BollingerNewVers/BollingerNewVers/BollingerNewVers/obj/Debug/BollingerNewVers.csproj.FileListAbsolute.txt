@@ -1,7 +1,6 @@
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerNewVers.exe.config
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerNewVers.exe
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerNewVers.pdb
-D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.csproj.AssemblyReference.cache
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.csproj.SuggestedBindingRedirects.cache
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.Form1.resources
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.Properties.Resources.resources
