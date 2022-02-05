@@ -14,3 +14,7 @@ D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\Newtonsoft.Json.xml
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\websocket-sharp.xml
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.csproj.CopyComplete
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerNewVers.exe.manifest
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerNewVers.application
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.exe.manifest
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.application
