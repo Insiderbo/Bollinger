@@ -95,9 +95,9 @@ namespace BollingerNewVers
 
             try
             {
-                dynamic www = await LoadUrlAsText($"https://testnet.binancefuture.com/fapi/v1/ticker/price?symbol={para}");
+                dynamic www = await LoadUrlAsText($"https://testnet.binancefuture.com/fapi/v1/premiumIndex?symbol={para}");
                 dynamic lastPare = JsonConvert.DeserializeObject(www);
-                lastprice = lastPare.price;
+                lastprice = (Convert.ToDouble(lastPare.markPrice));
             }
             catch { }
 
@@ -114,10 +114,11 @@ namespace BollingerNewVers
             double up = average + 2 * stdev;
             double down = average - 2 * stdev;
             double bandWidth = (up - down) / average;
-            double friproc = up * 1.03;
-            double sixproc = up * 1.06;
+            double friproc = Math.Round((up * 1.03),8);
+            double sixproc = Math.Round((up * 1.6),8);
             
-            dataGridView1.Rows.Add(para,Math.Round(up, 8), Math.Round(down, 8), average);
+            dataGridView1.Rows.Add(para, friproc, sixproc, lastprice);
+            label1.Text = "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price "+ lastprice;
 
             if (friproc != double.NaN && sixproc != double.NaN)
             {
@@ -134,7 +135,7 @@ namespace BollingerNewVers
         void Telegramm(string para, double friproc, double sixproc, double lastprice)
         {
             string path = @"C:\Users\insiderbo\Documents\Telegramm_Bot\bin\Debug\net5.0\Telegramm_Bot.exe";
-            if (lastprice > friproc && lastprice > sixproc)
+            if (lastprice > friproc)
             {
                 if(resalt.Contains(para) == false)
                 {
@@ -142,6 +143,7 @@ namespace BollingerNewVers
                     p.StartInfo.FileName = path;
                     p.StartInfo.Arguments = $"\"{para}\"";
                     p.Start();
+                    //MessageBox.Show(para);
                     resalt.Add(para);
                 }
             }

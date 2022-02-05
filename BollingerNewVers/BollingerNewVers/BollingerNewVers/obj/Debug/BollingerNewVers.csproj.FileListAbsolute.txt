@@ -17,3 +17,4 @@ D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerNewVers.application
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.exe.manifest
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.application
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.csproj.AssemblyReference.cache
