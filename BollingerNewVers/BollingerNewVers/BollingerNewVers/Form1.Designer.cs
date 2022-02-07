@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.para = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.up = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.avg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.down = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -42,6 +42,10 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.para = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.up = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.down = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -81,27 +85,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(429, 269);
             this.dataGridView1.TabIndex = 0;
             // 
-            // para
-            // 
-            this.para.HeaderText = "para";
-            this.para.Name = "para";
-            // 
-            // up
-            // 
-            this.up.HeaderText = "3 %";
-            this.up.Name = "up";
-            this.up.Width = 130;
-            // 
-            // avg
-            // 
-            this.avg.HeaderText = "6 %";
-            this.avg.Name = "avg";
-            // 
-            // down
-            // 
-            this.down.HeaderText = "Last price";
-            this.down.Name = "down";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.comboBox2);
@@ -117,8 +100,6 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "2",
-            "10",
             "60",
             "300",
             "600",
@@ -175,10 +156,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(461, 228);
+            this.label1.Location = new System.Drawing.Point(447, 218);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 9;
+            // 
+            // para
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.para.DefaultCellStyle = dataGridViewCellStyle1;
+            this.para.HeaderText = "para";
+            this.para.Name = "para";
+            // 
+            // up
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.up.DefaultCellStyle = dataGridViewCellStyle2;
+            this.up.HeaderText = "3 %";
+            this.up.Name = "up";
+            this.up.Width = 130;
+            // 
+            // avg
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.avg.DefaultCellStyle = dataGridViewCellStyle3;
+            this.avg.HeaderText = "6 %";
+            this.avg.Name = "avg";
+            // 
+            // down
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.down.DefaultCellStyle = dataGridViewCellStyle4;
+            this.down.HeaderText = "Last price";
+            this.down.Name = "down";
             // 
             // Form1
             // 
@@ -215,12 +225,12 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn para;
         private System.Windows.Forms.DataGridViewTextBoxColumn up;
         private System.Windows.Forms.DataGridViewTextBoxColumn avg;
         private System.Windows.Forms.DataGridViewTextBoxColumn down;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -79,7 +79,7 @@ namespace BollingerNewVers
                 {
                     i++;
                     string para = item.symbol.ToString();
-                    await Bollenger(para);
+                    Bollenger(para);
                 }
                 textBox1.Text =i.ToString();
             }
@@ -115,24 +115,18 @@ namespace BollingerNewVers
             double down = average - 2 * stdev;
             double bandWidth = (up - down) / average;
             double friproc = Math.Round((up * 1.03),8);
-            double sixproc = Math.Round((up * 1.6),8);
-            
+            double sixproc = Math.Round((up * 1.06),8);
+
+
             dataGridView1.Rows.Add(para, friproc, sixproc, lastprice);
             label1.Text = "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price "+ lastprice;
 
             if (friproc != double.NaN && sixproc != double.NaN)
             {
-                Telegramm(para, friproc, sixproc, lastprice);
+                Telegramm(para, friproc, sixproc, lastprice, up);
             }
         }
-
-        private void MoveRowUp(DataGridViewRow r)
-        {
-            dataGridView1.Rows.Remove(r);
-            dataGridView1.Rows.Insert(0, r);
-        }
-
-        void Telegramm(string para, double friproc, double sixproc, double lastprice)
+        void Telegramm(string para, double friproc, double sixproc, double lastprice, double up)
         {
             string path = @"C:\Users\insiderbo\Documents\Telegramm_Bot\bin\Debug\net5.0\Telegramm_Bot.exe";
             if (lastprice > friproc)
