@@ -7,31 +7,30 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
- 
+using Telegram.Bot;
 
 namespace BollingerNewVers
 {
+
     public partial class Form1 : Form
     {
         private string namePara;
         private int period;
         List<string> resalt = new List<string>();
+        static ITelegramBotClient botClient;
 
         public Form1()
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
            
         }
-
         private  void button1_Click(object sender, EventArgs e)
         {
             CycleWork();
         }
-
         private async void CycleWork()
         {
             while (true)
@@ -49,7 +48,6 @@ namespace BollingerNewVers
 
                 namePara = comboBox1.Text;
                 period = Convert.ToInt32(comboBox2.Text);
-                dataGridView1.Rows.Clear();
                 button1.Enabled = false;
                 await Get_Pairs();
                 await Task.Delay(period * 1000);
@@ -68,7 +66,6 @@ namespace BollingerNewVers
                 }
             }
         }
-
         public async Task Get_Pairs()
         {           
             dynamic allPares = JsonConvert.DeserializeObject(await LoadUrlAsText("https://testnet.binancefuture.com/fapi/v1/exchangeInfo"));
@@ -81,7 +78,7 @@ namespace BollingerNewVers
                     string para = item.symbol.ToString();
                     Bollenger(para);
                 }
-                textBox1.Text =i.ToString();
+                label2.Text =i.ToString();
             }
         }
         public async Task Bollenger(string para)
@@ -117,8 +114,6 @@ namespace BollingerNewVers
             double friproc = Math.Round((up * 1.03),8);
             double sixproc = Math.Round((up * 1.06),8);
 
-
-            dataGridView1.Rows.Add(para, friproc, sixproc, lastprice);
             label1.Text = "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price "+ lastprice;
 
             if (friproc != double.NaN && sixproc != double.NaN)
@@ -128,17 +123,12 @@ namespace BollingerNewVers
         }
         void Telegramm(string para, double friproc, double sixproc, double lastprice, double up)
         {
-            string path = @"C:\Users\insiderbo\Documents\Telegramm_Bot\bin\Debug\net5.0\Telegramm_Bot.exe";
             if (lastprice > friproc)
             {
                 if(resalt.Contains(para) == false)
                 {
-                    var p = new System.Diagnostics.Process();
-                    p.StartInfo.FileName = path;
-                    p.StartInfo.Arguments = $"\"{para}\"";
-                    p.Start();
-                    //MessageBox.Show(para);
-                    resalt.Add(para);
+                    var args = para.ToString();
+                    TelegramBot(args);
                 }
             }
             else
@@ -149,10 +139,19 @@ namespace BollingerNewVers
                 }
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             resalt.Clear();
+        }
+        static async Task TelegramBot(string args)
+        {
+            botClient = new TelegramBotClient("1873622145:AAETGH-oWv2PkkDJrAdNVAm9nMnNNRMWvbQ");
+            var chat_id = -596734253;
+            await SendMessageAsync(chat_id, args);
+        }
+        static async Task SendMessageAsync(long chatId, string args)
+        {
+            await botClient.SendTextMessageAsync(chatId: chatId, text: args);
         }
     }
 }

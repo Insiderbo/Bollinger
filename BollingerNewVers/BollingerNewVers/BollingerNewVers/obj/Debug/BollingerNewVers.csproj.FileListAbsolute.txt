@@ -17,4 +17,11 @@ D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerNewVers.application
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.exe.manifest
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.application
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\Telegram.Bot.dll
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\Telegram.Bot.pdb
+D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\bin\Debug\Telegram.Bot.xml
 D:\GitHub\Bollinger\BollingerNewVers\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.csproj.AssemblyReference.cache
