@@ -114,7 +114,7 @@ namespace BollingerNewVers
             double friproc = Math.Round((up * 1.03),8);
             double sixproc = Math.Round((up * 1.06),8);
 
-            label1.Text = "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price "+ lastprice;
+            label1.Text = "Pair " + para + "\n" + "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price "+ lastprice;
 
             if (friproc != double.NaN && sixproc != double.NaN)
             {
@@ -129,13 +129,17 @@ namespace BollingerNewVers
                 {
                     var args = para.ToString();
                     TelegramBot(args);
+                    resalt.Add(para);
                 }
             }
             else
             {
                 if (resalt.Contains(para) == true)
                 {
-                    resalt.Remove(para);
+                    if (lastprice < friproc)
+                    {
+                        resalt.Remove(para);
+                    }
                 }
             }
         }
