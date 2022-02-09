@@ -121,6 +121,12 @@ namespace BollingerNewVers
                 Telegramm(para, friproc, sixproc, lastprice, up);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            resalt.Clear();
+        }
+
         void Telegramm(string para, double friproc, double sixproc, double lastprice, double up)
         {
             if (lastprice > friproc)
@@ -142,10 +148,6 @@ namespace BollingerNewVers
                     }
                 }
             }
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            resalt.Clear();
         }
         static async Task TelegramBot(string args)
         {
