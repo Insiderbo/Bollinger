@@ -89,7 +89,7 @@ namespace BollingerNewVers
             double totalAverage = 0;
             double totalSquares = 0;
             double lastprice = 0;
-
+            double openPrice = 0;
             try
             {
                 dynamic www = await LoadUrlAsText($"https://api.binance.com/api/v3/ticker/price?symbol={para}");
@@ -101,7 +101,8 @@ namespace BollingerNewVers
             //[JSON].[0].[4]
             foreach (dynamic item in allOrder)
             {
-                double closePrice= (Convert.ToDouble(item[4]));
+                openPrice = (Convert.ToDouble(item[1]));//[JSON].[0].[1]
+                double closePrice = (Convert.ToDouble(item[4]));
                 totalAverage += closePrice;//итоговая цена
                 totalSquares += Math.Pow(Math.Round(closePrice, 8), 2);//возводим в квадрат средние цены закрытия
             }
@@ -113,12 +114,13 @@ namespace BollingerNewVers
             double bandWidth = (up - down) / average;
             double friproc = Math.Round((up * 1.03),8);
             double sixproc = Math.Round((up * 1.06),8);
+            double procOpen = Math.Round((openPrice * 1.03), 8);
 
             label1.Text = "Pair " + para + "\n" + "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price "+ lastprice;
 
-            if (friproc != double.NaN && sixproc != double.NaN)
+            if (friproc != double.NaN && sixproc != double.NaN && procOpen != double.NaN)
             {
-                Telegramm(para, friproc, sixproc, lastprice, up);
+                Telegramm(para, friproc, sixproc, lastprice, up, procOpen);
             }
         }
 
@@ -127,27 +129,27 @@ namespace BollingerNewVers
             resalt.Clear();
         }
 
-        void Telegramm(string para, double friproc, double sixproc, double lastprice, double up)
+        void Telegramm(string para, double friproc, double sixproc, double lastprice, double up, double procOpen)
         {
-            if (lastprice > friproc)
+            if (lastprice > procOpen || lastprice > friproc)
             {
-                if(resalt.Contains(para) == false)
+                if (resalt.Contains(para) == false)
                 {
                     var args = para.ToString();
                     TelegramBot(args);
                     resalt.Add(para);
                 }
+
             }
             else
             {
                 if (resalt.Contains(para) == true)
                 {
-                    if (lastprice < friproc)
-                    {
-                        resalt.Remove(para);
-                    }
+                    resalt.Remove(para);
                 }
+
             }
+
         }
         static async Task TelegramBot(string args)
         {
