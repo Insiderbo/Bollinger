@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bollinger.Properties {
+namespace BollingerSpotMarket.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -122,17 +122,16 @@ namespace BollingerNewVers
             double upproc = Math.Round((up * procup),8);
             double procdown = 1+double.Parse(comboBox3.Text)/100;
             double downproc = Math.Round((down / procdown),8);
-            double proclast = Math.Round((openPrice /1.03), 8);
 
             ///label1.Text = "Pair " + para + "\n" + "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price " + lastprice;
             label1.Text = "Pair " + para;
 
-            if (upproc != double.NaN && downproc != double.NaN && proclast != double.NaN)
+            if (upproc != double.NaN && downproc != double.NaN)
             {
-                Telegramm(para, upproc, downproc, lastprice, up, proclast);
+                Telegramm(para, upproc, downproc, lastprice);
             }
         }
-        void Telegramm(string para, double upproc, double downproc, double lastprice, double up, double proclast)
+        void Telegramm(string para, double upproc, double downproc, double lastprice)
         {
             if (lastprice < downproc && resalt.Contains(para) == false && checkBox2.Checked == true)
             {

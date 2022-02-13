@@ -1,8 +1,3 @@
-D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerSpotMarket.exe.config
-D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerSpotMarket.exe.manifest
-D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerSpotMarket.application
-D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerSpotMarket.exe
-D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\BollingerSpotMarket.pdb
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Newtonsoft.Json.dll
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\System.Threading.Tasks.Extensions.dll
@@ -19,8 +14,14 @@ D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNew
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.Properties.Resources.resources
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.GenerateResource.cache
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.CoreCompileInputs.cache
-D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.exe.manifest
-D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.application
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.CopyComplete
-D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.exe
-D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.pdb
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Spot BB.exe.config
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Spot BB.exe.manifest
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Spot BB.application
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Spot BB.exe
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Spot BB.pdb
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.AssemblyReference.cache
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.exe.manifest
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.application
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.exe
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.pdb

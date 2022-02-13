@@ -7,7 +7,7 @@
     <ProjectGuid>{27441E96-F85F-44A3-B7E3-1E16E056E920}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>BollingerSpotMarket</RootNamespace>
-    <AssemblyName>BollingerSpotMarket</AssemblyName>
+    <AssemblyName>Spot BB</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
