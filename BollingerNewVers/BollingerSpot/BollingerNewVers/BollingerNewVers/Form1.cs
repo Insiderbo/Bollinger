@@ -16,6 +16,7 @@ namespace BollingerNewVers
     {
         private string namePara;
         private int period;
+        bool work;
         List<string> resalt = new List<string>();
         static ITelegramBotClient botClient;
 
@@ -29,12 +30,18 @@ namespace BollingerNewVers
         }
         private  void button1_Click(object sender, EventArgs e)
         {
+            work = true;
             CycleWork();
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
+            comboBox3.Enabled = false;
+            comboBox4.Enabled = false;
         }
         private async void CycleWork()
         {
             while (true)
             {   
+                
                 if (comboBox1.Text == "")
                 {
                     MessageBox.Show("No order");
@@ -52,7 +59,6 @@ namespace BollingerNewVers
                 await Get_Pairs();
                 await Task.Delay(period * 1000);
             }
-
         }
         public async Task<string> LoadUrlAsText(string url)
         {
@@ -112,44 +118,44 @@ namespace BollingerNewVers
             double up = average + 2 * stdev;
             double down = average - 2 * stdev;
             double bandWidth = (up - down) / average;
-            double friproc = Math.Round((up * 1.03),8);
-            double sixproc = Math.Round((up * 1.06),8);
-            double procOpen = Math.Round((openPrice * 1.03), 8);
+            double procup = 1+double.Parse(comboBox4.Text)/100;
+            double upproc = Math.Round((up * procup),8);
+            double procdown = 1+double.Parse(comboBox3.Text)/100;
+            double downproc = Math.Round((down / procdown),8);
+            double proclast = Math.Round((openPrice /1.03), 8);
 
-            label1.Text = "Pair " + para + "\n" + "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price "+ lastprice;
+            ///label1.Text = "Pair " + para + "\n" + "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price " + lastprice;
+            label1.Text = "Pair " + para;
 
-            if (friproc != double.NaN && sixproc != double.NaN && procOpen != double.NaN)
+            if (upproc != double.NaN && downproc != double.NaN && proclast != double.NaN)
             {
-                Telegramm(para, friproc, sixproc, lastprice, up, procOpen);
+                Telegramm(para, upproc, downproc, lastprice, up, proclast);
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        void Telegramm(string para, double upproc, double downproc, double lastprice, double up, double proclast)
         {
-            resalt.Clear();
-        }
-
-        void Telegramm(string para, double friproc, double sixproc, double lastprice, double up, double procOpen)
-        {
-            if (lastprice > procOpen || lastprice > friproc)
+            if (lastprice < downproc && resalt.Contains(para) == false && checkBox2.Checked == true)
             {
-                if (resalt.Contains(para) == false)
+               var args = "DOWN ==-> " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice,8).ToString();
+               TelegramBot(args);
+               resalt.Add(para);
+            }
+            else
+            {
+                if (lastprice > upproc && resalt.Contains(para) == false && checkBox1.Checked == true)
                 {
-                    var args = para.ToString();
+                    var args = "UP ==->  " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
                     TelegramBot(args);
                     resalt.Add(para);
                 }
-
             }
-            else
+            if (lastprice > downproc && lastprice < upproc)
             {
                 if (resalt.Contains(para) == true)
                 {
                     resalt.Remove(para);
                 }
-
             }
-
         }
         static async Task TelegramBot(string args)
         {
@@ -160,6 +166,15 @@ namespace BollingerNewVers
         static async Task SendMessageAsync(long chatId, string args)
         {
             await botClient.SendTextMessageAsync(chatId: chatId, text: args);
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            resalt.Clear();
+            button1.Enabled = true;
+            comboBox1.Enabled = true;
+            comboBox2.Enabled = true;
+            comboBox3.Enabled = true;
+            comboBox4.Enabled = true;
         }
     }
 }

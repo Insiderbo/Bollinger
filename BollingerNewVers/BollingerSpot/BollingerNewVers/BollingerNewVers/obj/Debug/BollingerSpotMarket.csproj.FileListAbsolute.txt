@@ -14,7 +14,6 @@ D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNew
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Telegram.Bot.pdb
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Telegram.Bot.xml
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\websocket-sharp.xml
-D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.AssemblyReference.cache
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.SuggestedBindingRedirects.cache
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.Form1.resources
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.Properties.Resources.resources

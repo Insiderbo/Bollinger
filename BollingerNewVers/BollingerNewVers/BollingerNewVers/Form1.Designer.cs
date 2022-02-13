@@ -108,7 +108,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(51, 22);
             this.button2.TabIndex = 8;
-            this.button2.Text = "Clear cash";
+            this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -144,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(183, 195);
+            this.ClientSize = new System.Drawing.Size(183, 151);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);

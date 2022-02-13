@@ -30,6 +30,8 @@ namespace BollingerNewVers
         private  void button1_Click(object sender, EventArgs e)
         {
             CycleWork();
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
         }
         private async void CycleWork()
         {
@@ -114,7 +116,7 @@ namespace BollingerNewVers
             double friproc = Math.Round((up * 1.03),8);
             double sixproc = Math.Round((up * 1.06),8);
 
-            label1.Text = "Pair " + para + "\n" + "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price "+ lastprice;
+            label1.Text = "Pair " + para;
 
             if (friproc != double.NaN && sixproc != double.NaN)
             {
@@ -127,7 +129,7 @@ namespace BollingerNewVers
             {
                 if(resalt.Contains(para) == false)
                 {
-                    var args = para.ToString();
+                    var args = "UP ==->  " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
                     TelegramBot(args);
                     resalt.Add(para);
                 }
