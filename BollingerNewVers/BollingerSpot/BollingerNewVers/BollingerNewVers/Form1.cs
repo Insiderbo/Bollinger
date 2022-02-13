@@ -136,7 +136,7 @@ namespace BollingerNewVers
         {
             if (lastprice < downproc && resalt.Contains(para) == false && checkBox2.Checked == true)
             {
-               var args = "DOWN ==-> " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice,8).ToString();
+               var args = "DOWN ==-> " + comboBox3.Text.ToString()+ " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice,8).ToString();
                TelegramBot(args);
                resalt.Add(para);
             }
@@ -144,7 +144,7 @@ namespace BollingerNewVers
             {
                 if (lastprice > upproc && resalt.Contains(para) == false && checkBox1.Checked == true)
                 {
-                    var args = "UP ==->  " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                    var args = "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
                     TelegramBot(args);
                     resalt.Add(para);
                 }

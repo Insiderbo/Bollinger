@@ -76,7 +76,8 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "10",
+            "15",
+            "30",
             "60",
             "300",
             "600",

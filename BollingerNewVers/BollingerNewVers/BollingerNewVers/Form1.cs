@@ -32,6 +32,8 @@ namespace BollingerNewVers
             CycleWork();
             comboBox1.Enabled = false;
             comboBox2.Enabled = false;
+            comboBox3.Enabled = false;
+            comboBox4.Enabled = false;
         }
         private async void CycleWork()
         {
@@ -113,35 +115,41 @@ namespace BollingerNewVers
             double up = average + 2 * stdev;
             double down = average - 2 * stdev;
             double bandWidth = (up - down) / average;
-            double friproc = Math.Round((up * 1.03),8);
-            double sixproc = Math.Round((up * 1.06),8);
+            double procup = 1 + double.Parse(comboBox4.Text) / 100;
+            double upproc = Math.Round((up * procup), 8);
+            double procdown = 1 + double.Parse(comboBox3.Text) / 100;
+            double downproc = Math.Round((down / procdown), 8);
+            //label1.Text = "Pair " + para + "\n" + "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price " + lastprice;
 
             label1.Text = "Pair " + para;
 
-            if (friproc != double.NaN && sixproc != double.NaN)
+            if (upproc != double.NaN && downproc != double.NaN)
             {
-                Telegramm(para, friproc, sixproc, lastprice, up);
+                Telegramm(para, upproc, downproc, lastprice, up);
             }
         }
-        void Telegramm(string para, double friproc, double sixproc, double lastprice, double up)
+        void Telegramm(string para, double upproc, double downproc, double lastprice, double up)
         {
-            if (lastprice > friproc)
+            if (lastprice < downproc && resalt.Contains(para) == false && checkBox2.Checked == true)
             {
-                if(resalt.Contains(para) == false)
+                var args = "DOWN ==-> " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                TelegramBot(args);
+                resalt.Add(para);
+            }
+            else
+            {
+                if (lastprice > upproc && resalt.Contains(para) == false && checkBox1.Checked == true)
                 {
-                    var args = "UP ==->  " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                    var args = "UP ==->  " + comboBox3.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
                     TelegramBot(args);
                     resalt.Add(para);
                 }
             }
-            else
+            if (lastprice > downproc && lastprice < upproc)
             {
                 if (resalt.Contains(para) == true)
                 {
-                    if (lastprice < friproc)
-                    {
-                        resalt.Remove(para);
-                    }
+                    resalt.Remove(para);
                 }
             }
         }
