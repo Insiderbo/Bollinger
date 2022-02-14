@@ -18,6 +18,8 @@ namespace BollingerNewVers
         private int period;
         bool work;
         List<string> resalt = new List<string>();
+        List<string> monitoring = new List<string>();
+
         static ITelegramBotClient botClient;
 
         public Form1()
@@ -155,6 +157,21 @@ namespace BollingerNewVers
                     resalt.Remove(para);
                 }
             }
+
+            if (lastprice < downproc && monitoring.Contains(para) == true)
+            {
+                var arg = "MONITORING " + "\n" + "DOWN ==-> " + comboBox3.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                TelegramBotRepuschae(arg);
+            }
+            else
+            {
+                if (lastprice > upproc && monitoring.Contains(para) == true)
+                {
+                    var arg = "MONITORING " + "\n" + "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                    TelegramBotRepuschae(arg);
+                }
+            }
+
         }
         static async Task TelegramBot(string args)
         {
@@ -166,14 +183,32 @@ namespace BollingerNewVers
         {
             await botClient.SendTextMessageAsync(chatId: chatId, text: args);
         }
+        static async Task TelegramBotRepuschae(string arg)
+        {
+            botClient = new TelegramBotClient("5059700101:AAGpy77Pjg_vmX4aVSXYyS4oa00U_cyEMOA");
+            var chat_id = -1001714789241;
+            await SendMessageAsyncRepurchase(chat_id, arg);
+        }
+        static async Task SendMessageAsyncRepurchase(long chatId, string arg)
+        {
+            await botClient.SendTextMessageAsync(chatId: chatId, text: arg);
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             resalt.Clear();
+            monitoring.Clear();
             button1.Enabled = true;
             comboBox1.Enabled = true;
             comboBox2.Enabled = true;
             comboBox3.Enabled = true;
             comboBox4.Enabled = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            monitoring.Add(textBox1.Text.ToString());
+            textBox1.Text = "";
         }
     }
 }

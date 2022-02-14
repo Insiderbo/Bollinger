@@ -156,8 +156,11 @@ namespace BollingerNewVers
         }
         static async Task TelegramBot(string args)
         {
-            botClient = new TelegramBotClient("1873622145:AAETGH-oWv2PkkDJrAdNVAm9nMnNNRMWvbQ");
-            var chat_id = -596734253;
+            //botClient = new TelegramBotClient("1873622145:AAETGH-oWv2PkkDJrAdNVAm9nMnNNRMWvbQ");
+            //var chat_id = -596734253;
+            botClient = new TelegramBotClient("5167308233:AAGF2mu55byq8XKBXxo7SKFOke7rB1tc5_8");
+            var chat_id = -1001741001182;
+
             await SendMessageAsync(chat_id, args);
         }
         static async Task SendMessageAsync(long chatId, string args)
