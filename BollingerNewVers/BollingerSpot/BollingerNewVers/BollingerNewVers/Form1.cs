@@ -16,10 +16,9 @@ namespace BollingerNewVers
     {
         private string namePara;
         private int period;
-        bool work;
         List<string> resalt = new List<string>();
         List<string> monitoring = new List<string>();
-
+        List<string> controlavg = new List<string>();
         static ITelegramBotClient botClient;
 
         public Form1()
@@ -32,7 +31,6 @@ namespace BollingerNewVers
         }
         private  void button1_Click(object sender, EventArgs e)
         {
-            work = true;
             CycleWork();
             comboBox1.Enabled = false;
             comboBox2.Enabled = false;
@@ -130,11 +128,12 @@ namespace BollingerNewVers
 
             if (upproc != double.NaN && downproc != double.NaN)
             {
-                Telegramm(para, upproc, downproc, lastprice);
+                Telegramm(para, upproc, downproc, lastprice, average, down);
             }
         }
-        void Telegramm(string para, double upproc, double downproc, double lastprice)
+        void Telegramm(string para, double upproc, double downproc, double lastprice, double average, double down)
         {
+
             if (lastprice < downproc && resalt.Contains(para) == false && checkBox2.Checked == true)
             {
                var args = "DOWN ==-> " + comboBox3.Text.ToString()+ " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice,8).ToString();
@@ -150,6 +149,8 @@ namespace BollingerNewVers
                     resalt.Add(para);
                 }
             }
+
+
             if (lastprice > downproc && lastprice < upproc)
             {
                 if (resalt.Contains(para) == true)
@@ -157,6 +158,7 @@ namespace BollingerNewVers
                     resalt.Remove(para);
                 }
             }
+
 
             if (lastprice < downproc && monitoring.Contains(para) == true)
             {
@@ -172,6 +174,20 @@ namespace BollingerNewVers
                 }
             }
 
+
+            if (lastprice > average && controlavg.Contains(para) == true)
+            {
+                var arg = "PUMP ==->  " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                TelegramBotRepuschae(arg);
+                controlavg.Remove(para);
+            }
+            else
+            {
+                if (lastprice < down && controlavg.Contains(para) == false)
+                {
+                    controlavg.Add(para);
+                }
+            }
         }
         static async Task TelegramBot(string args)
         {
@@ -193,7 +209,6 @@ namespace BollingerNewVers
         {
             await botClient.SendTextMessageAsync(chatId: chatId, text: arg);
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             resalt.Clear();
@@ -204,7 +219,6 @@ namespace BollingerNewVers
             comboBox3.Enabled = true;
             comboBox4.Enabled = true;
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             monitoring.Add(textBox1.Text.ToString());
