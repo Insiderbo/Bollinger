@@ -16,6 +16,8 @@ namespace BollingerNewVers
     {
         private string namePara;
         private int period;
+
+        Dictionary<string, List<string>> allOrders = new Dictionary<string, List<string>>();
         List<string> resalt = new List<string>();
         List<string> monitoring = new List<string>();
         List<string> controlavg = new List<string>();
@@ -23,12 +25,10 @@ namespace BollingerNewVers
 
         public Form1()
         {
+            AddAllOrders();
             InitializeComponent();
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-           
-        }
+        
         private  void button1_Click(object sender, EventArgs e)
         {
             CycleWork();
@@ -40,8 +40,7 @@ namespace BollingerNewVers
         private async void CycleWork()
         {
             while (true)
-            {   
-                
+            {                   
                 if (comboBox1.Text == "")
                 {
                     MessageBox.Show("No order");
@@ -56,7 +55,7 @@ namespace BollingerNewVers
                 namePara = comboBox1.Text;
                 period = Convert.ToInt32(comboBox2.Text);
                 button1.Enabled = false;
-                await Get_Pairs();
+                await StartWork();
                 await Task.Delay(period * 1000);
             }
         }
@@ -72,19 +71,11 @@ namespace BollingerNewVers
                 }
             }
         }
-        public async Task Get_Pairs()
-        {           
-            dynamic allPares = JsonConvert.DeserializeObject(await LoadUrlAsText("https://api.binance.com/api/v3/exchangeInfo"));
-            int i = 0;
-            foreach (var item in allPares.symbols)
+        public async Task StartWork()
+        {
+            foreach (var item in allOrders[namePara])
             {
-                if (item.quoteAsset == namePara)//[JSON].symbols.[0].quoteAsset
-                {
-                    i++;
-                    string para = item.symbol.ToString();
-                    Bollenger(para);
-                }
-                label2.Text =i.ToString();
+                Bollenger(item);
             }
         }
         public async Task Bollenger(string para)
@@ -128,62 +119,59 @@ namespace BollingerNewVers
 
             if (upproc != double.NaN && downproc != double.NaN)
             {
-                Telegramm(para, upproc, downproc, lastprice, average, down);
+                IndexForTelegramm(para, upproc, downproc, lastprice, average, down);
             }
         }
-        void Telegramm(string para, double upproc, double downproc, double lastprice, double average, double down)
+        void IndexForTelegramm(string para, double upproc, double downproc, double lastprice, double average, double down)
         {
-
-            if (lastprice < downproc && resalt.Contains(para) == false && checkBox2.Checked == true)
+            if (resalt.Contains(para) == false) 
             {
-               var args = "DOWN ==-> " + comboBox3.Text.ToString()+ " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice,8).ToString();
-               TelegramBot(args);
-               resalt.Add(para);
-            }
-            else
-            {
-                if (lastprice > upproc && resalt.Contains(para) == false && checkBox1.Checked == true)
+                if (lastprice < downproc && checkBox2.Checked == true)
                 {
-                    var args = "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                    var args = "DOWN ==-> " + comboBox3.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
                     TelegramBot(args);
                     resalt.Add(para);
                 }
-            }
-
-
-            if (lastprice > downproc && lastprice < upproc)
-            {
-                if (resalt.Contains(para) == true)
+                else if (lastprice > upproc && checkBox1.Checked == true)
                 {
-                    resalt.Remove(para);
+
+                    var args = "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                    TelegramBot(args);
+                    resalt.Add(para);
+
                 }
             }
-
-
-            if (lastprice < downproc && monitoring.Contains(para) == true)
+            else if (lastprice > downproc && lastprice < upproc )
             {
-                var arg = "MONITORING " + "\n" + "DOWN ==-> " + comboBox3.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
-                TelegramBotRepuschae(arg);
+
+                resalt.Remove(para);
+
             }
-            else
+
+            if (monitoring.Contains(para) == true)
             {
-                if (lastprice > upproc && monitoring.Contains(para) == true)
+                if (lastprice < downproc)
+                {
+                    var arg = "MONITORING " + "\n" + "DOWN ==-> " + comboBox3.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                    TelegramBotRepuschae(arg);
+                }
+                else if (lastprice > upproc)
                 {
                     var arg = "MONITORING " + "\n" + "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
                     TelegramBotRepuschae(arg);
+
                 }
             }
 
-
-            if (lastprice > average && controlavg.Contains(para) == true)
+            if (controlavg.Contains(para) == true)
             {
-                var arg = "PUMP ==->  " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
-                TelegramBotRepuschae(arg);
-                controlavg.Remove(para);
-            }
-            else
-            {
-                if (lastprice < down && controlavg.Contains(para) == false)
+                if (lastprice > average)
+                {
+                    var arg = "PUMP ==->  " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                    TelegramBotRepuschae(arg);
+                    controlavg.Remove(para);
+                }
+                else if (lastprice < down )
                 {
                     controlavg.Add(para);
                 }
@@ -224,5 +212,30 @@ namespace BollingerNewVers
             monitoring.Add(textBox1.Text.ToString());
             textBox1.Text = "";
         }
+
+        async void  AddAllOrders()
+        {
+            dynamic allPares = JsonConvert.DeserializeObject(await LoadUrlAsText("https://api.binance.com/api/v3/exchangeInfo"));
+            
+            foreach (var item in allPares.symbols)
+            {
+               
+
+                if (allOrders.ContainsKey(item.quoteAsset.ToString()))
+                {
+                    //orders= allOrders[item.quoteAsset.ToString()];
+                    //orders.Add(item.symbol.ToString());
+                    //allOrders[item.quoteAsset.ToString()]= orders;
+                    allOrders[item.quoteAsset.ToString()].Add(item.symbol.ToString());
+                }
+                else
+                {
+                    List<string> orders = new List<string>();
+                    orders.Add(item.symbol.ToString());
+                    allOrders.Add(item.quoteAsset.ToString(), orders);
+                }
+                
+            }
+        }        
     }
 }
