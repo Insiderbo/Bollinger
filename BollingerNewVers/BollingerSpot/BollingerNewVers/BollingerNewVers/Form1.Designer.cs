@@ -46,11 +46,16 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -126,13 +131,14 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 228);
+            this.label1.Location = new System.Drawing.Point(18, 285);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 9;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Highlight;
             this.groupBox3.Location = new System.Drawing.Point(111, 12);
@@ -238,11 +244,67 @@
             this.textBox1.Size = new System.Drawing.Size(69, 20);
             this.textBox1.TabIndex = 18;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(9, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 1;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.comboBox5);
+            this.groupBox6.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.groupBox6.Location = new System.Drawing.Point(21, 222);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(61, 54);
+            this.groupBox6.TabIndex = 19;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Period";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "1m",
+            "3m",
+            "5m",
+            "15m",
+            "30m",
+            "1h",
+            "2h",
+            "4h",
+            "6h",
+            "8h",
+            "12h",
+            "1d",
+            "3d",
+            "1w",
+            "1M"});
+            this.comboBox5.Location = new System.Drawing.Point(8, 19);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(36, 21);
+            this.comboBox5.TabIndex = 3;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(111, 233);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(51, 35);
+            this.button4.TabIndex = 20;
+            this.button4.Text = "Test Bot";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(183, 249);
+            this.ClientSize = new System.Drawing.Size(183, 307);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button3);
@@ -266,6 +328,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,6 +353,10 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.Button button4;
     }
 }
 

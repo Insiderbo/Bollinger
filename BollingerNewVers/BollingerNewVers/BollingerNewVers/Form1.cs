@@ -158,7 +158,6 @@ namespace BollingerNewVers
         {
             var chat_id = -1001795291190;
             botClient = new TelegramBotClient("1873622145:AAETGH-oWv2PkkDJrAdNVAm9nMnNNRMWvbQ");
-
             await SendMessageAsync(chat_id, args);
         }
         static async Task SendMessageAsync(long chatId, string args)
