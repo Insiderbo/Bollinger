@@ -165,16 +165,17 @@ namespace BollingerNewVers
 
             if (controlavg.Contains(para) == true)
             {
-                if (lastprice > average)
+                if (lastprice > down)
                 {
                     var arg = "PUMP ==->  " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
                     TelegramBotRepuschae(arg);
                     controlavg.Remove(para);
                 }
-                else if (lastprice < down )
-                {
-                    controlavg.Add(para);
-                }
+            }
+
+            if (lastprice < down )
+            {
+                controlavg.Add(para);
             }
         }
         static async Task TelegramBot(string args)
@@ -212,7 +213,6 @@ namespace BollingerNewVers
             monitoring.Add(textBox1.Text.ToString());
             textBox1.Text = "";
         }
-
         async void  AddAllOrders()
         {
             dynamic allPares = JsonConvert.DeserializeObject(await LoadUrlAsText("https://api.binance.com/api/v3/exchangeInfo"));
