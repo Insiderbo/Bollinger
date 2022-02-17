@@ -89,7 +89,7 @@ namespace BollingerNewVers
         }
         public async Task Bollenger(string para)
         {
-            dynamic d = await LoadUrlAsText($"https://testnet.binancefuture.com/fapi/v1/markPriceKlines?symbol={para}&interval=15m&limit=22");
+            dynamic d = await LoadUrlAsText($"https://testnet.binancefuture.com/fapi/v1/markPriceKlines?symbol={para}&interval=15m&limit=21");
             dynamic allOrder = JsonConvert.DeserializeObject(d);
             double totalAverage = 0;
             double totalSquares = 0;
@@ -156,10 +156,8 @@ namespace BollingerNewVers
         }
         static async Task TelegramBot(string args)
         {
-            //botClient = new TelegramBotClient("1873622145:AAETGH-oWv2PkkDJrAdNVAm9nMnNNRMWvbQ");
-            //var chat_id = -596734253;
-            botClient = new TelegramBotClient("5167308233:AAGF2mu55byq8XKBXxo7SKFOke7rB1tc5_8");
-            var chat_id = -1001741001182;
+            var chat_id = -1001795291190;
+            botClient = new TelegramBotClient("1873622145:AAETGH-oWv2PkkDJrAdNVAm9nMnNNRMWvbQ");
 
             await SendMessageAsync(chat_id, args);
         }
@@ -175,6 +173,12 @@ namespace BollingerNewVers
             comboBox2.Enabled = true;
             comboBox3.Enabled = true;
             comboBox4.Enabled = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var args = "Test bot";
+            TelegramBot(args);
         }
     }
 }

@@ -75,7 +75,11 @@ namespace BollingerNewVers
         {
             
 
+<<<<<<< HEAD
             dynamic d = await LoadUrlAsText($"https://api.binance.com/api/v1/klines?symbol={para}&interval=15m&limit=21");
+=======
+            dynamic d = await LoadUrlAsText($"https://api.binance.com/api/v1/klines?symbol={para}&interval=1h&limit=21");
+>>>>>>> da7d46cb49c599db41e7b29b0433002b5fe11f7a
             dynamic allOrder = JsonConvert.DeserializeObject(d);
             double totalAverage = 0;
             double totalSquares = 0;
