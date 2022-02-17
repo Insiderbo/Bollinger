@@ -81,7 +81,7 @@ namespace BollingerNewVers
         public async Task Bollenger(string para)
         {
 
-            dynamic d = await LoadUrlAsText($"https://api.binance.com/api/v1/klines?symbol={para}&interval=15m&limit=22");
+            dynamic d = await LoadUrlAsText($"https://api.binance.com/api/v1/klines?symbol={para}&interval=1h&limit=21");
             dynamic allOrder = JsonConvert.DeserializeObject(d);
             double totalAverage = 0;
             double totalSquares = 0;
