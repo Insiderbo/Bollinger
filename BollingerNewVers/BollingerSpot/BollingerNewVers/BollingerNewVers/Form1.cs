@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Telegram.Bot;
 
 namespace BollingerNewVers
 {
@@ -15,20 +12,16 @@ namespace BollingerNewVers
     public partial class Form1 : Form
     {
         private string namePara;
-        private int period;
+        private int period;     
+        
+        
 
         Dictionary<string, List<string>> allOrders = new Dictionary<string, List<string>>();
-        List<string> resalt = new List<string>();
-        List<string> monitoring = new List<string>();
-        List<string> controlavg = new List<string>();
-        static ITelegramBotClient botClient;
-
         public Form1()
         {
             AddAllOrders();
             InitializeComponent();
-        }
-        
+        }        
         private  void button1_Click(object sender, EventArgs e)
         {
             CycleWork();
@@ -80,8 +73,9 @@ namespace BollingerNewVers
         }
         public async Task Bollenger(string para)
         {
+            
 
-            dynamic d = await LoadUrlAsText($"https://api.binance.com/api/v1/klines?symbol={para}&interval=15m&limit=22");
+            dynamic d = await LoadUrlAsText($"https://api.binance.com/api/v1/klines?symbol={para}&interval=15m&limit=21");
             dynamic allOrder = JsonConvert.DeserializeObject(d);
             double totalAverage = 0;
             double totalSquares = 0;
@@ -104,104 +98,41 @@ namespace BollingerNewVers
                 totalSquares += Math.Pow(Math.Round(closePrice, 8), 2);//возводим в квадрат средние цены закрытия
             }
 
-            double average = totalAverage / allOrder.Count;
-            double stdev = Math.Sqrt((totalSquares - Math.Pow(totalAverage, 2) / allOrder.Count) / allOrder.Count);
-            double up = average + 2 * stdev;
-            double down = average - 2 * stdev;
-            double bandWidth = (up - down) / average;
-            double procup = 1+double.Parse(comboBox4.Text)/100;
-            double upproc = Math.Round((up * procup),8);
-            double procdown = 1+double.Parse(comboBox3.Text)/100;
-            double downproc = Math.Round((down / procdown),8);
+            Dictionary<string, double> indicators = new Dictionary<string, double>();
+
+            indicators.Add("average", totalAverage / allOrder.Count);
+            indicators.Add("stdev", Math.Sqrt((totalSquares - Math.Pow(totalAverage, 2) / allOrder.Count) / allOrder.Count));
+            indicators.Add("up", indicators["average"] + 2 * indicators["stdev"]);
+            indicators.Add("down", indicators["average"] - 2 * indicators["stdev"]);
+            indicators.Add("bandWidth", (indicators["up"] - indicators["stdev"])/ indicators["average"]);
+            indicators.Add("procup", 1 + double.Parse(comboBox4.Text) / 100);
+            indicators.Add("upproc", Math.Round(indicators["up"] * indicators["procup"], 8));
+            indicators.Add("procdown", 1 + double.Parse(comboBox3.Text) / 100);
+            indicators.Add("downproc", Math.Round((indicators["down"] / indicators["procdown"]), 8));
+            indicators.Add("lastprice", lastprice);
 
             ///label1.Text = "Pair " + para + "\n" + "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price " + lastprice;
             label1.Text = "Pair " + para;
 
-            if (upproc != double.NaN && downproc != double.NaN)
+            if (indicators["upproc"] != double.NaN && indicators["downproc"] != double.NaN)
             {
-                IndexForTelegramm(para, upproc, downproc, lastprice, average, down);
-            }
-        }
-        void IndexForTelegramm(string para, double upproc, double downproc, double lastprice, double average, double down)
-        {
-            if (resalt.Contains(para) == false) 
-            {
-                if (lastprice < downproc && checkBox2.Checked == true)
-                {
-                    var args = "DOWN ==-> " + comboBox3.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
-                    TelegramBot(args);
-                    resalt.Add(para);
-                }
-                else if (lastprice > upproc && checkBox1.Checked == true)
-                {
-
-                    var args = "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
-                    TelegramBot(args);
-                    resalt.Add(para);
-
-                }
-            }
-            else if (lastprice > downproc && lastprice < upproc )
-            {
-
-                resalt.Remove(para);
+                BollingerSpotMarket.Telegram.IndexForTelegramm(para, 
+                    indicators,
+                    new Dictionary<string, string> () {
+                        {"comboBox3", comboBox3.Text},
+                        {"comboBox4", comboBox4.Text}
+                    },
+                    new Dictionary<string, bool>()
+                    {
+                        {"checkBox1", checkBox1.Enabled},
+                        {"checkBox2", checkBox2.Enabled}                        
+                    });
 
             }
-
-            if (monitoring.Contains(para) == true)
-            {
-                if (lastprice < downproc)
-                {
-                    var arg = "MONITORING " + "\n" + "DOWN ==-> " + comboBox3.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
-                    TelegramBotRepuschae(arg);
-                }
-                else if (lastprice > upproc)
-                {
-                    var arg = "MONITORING " + "\n" + "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
-                    TelegramBotRepuschae(arg);
-
-                }
-            }
-
-            if (controlavg.Contains(para) == true)
-            {
-                if (lastprice > down)
-                {
-                    var arg = "PUMP ==->  " + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
-                    TelegramBotRepuschae(arg);
-                    controlavg.Remove(para);
-                }
-            }
-
-            if (lastprice < down )
-            {
-                controlavg.Add(para);
-            }
-        }
-        static async Task TelegramBot(string args)
-        {
-            botClient = new TelegramBotClient("5167308233:AAGF2mu55byq8XKBXxo7SKFOke7rB1tc5_8");
-            var chat_id = -1001741001182;
-            await SendMessageAsync(chat_id, args);
-        }
-        static async Task SendMessageAsync(long chatId, string args)
-        {
-            await botClient.SendTextMessageAsync(chatId: chatId, text: args);
-        }
-        static async Task TelegramBotRepuschae(string arg)
-        {
-            botClient = new TelegramBotClient("5059700101:AAGpy77Pjg_vmX4aVSXYyS4oa00U_cyEMOA");
-            var chat_id = -1001714789241;
-            await SendMessageAsyncRepurchase(chat_id, arg);
-        }
-        static async Task SendMessageAsyncRepurchase(long chatId, string arg)
-        {
-            await botClient.SendTextMessageAsync(chatId: chatId, text: arg);
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            resalt.Clear();
-            monitoring.Clear();
+            BollingerSpotMarket.Telegram.ClearCheckedOrders();
             button1.Enabled = true;
             comboBox1.Enabled = true;
             comboBox2.Enabled = true;
@@ -210,7 +141,7 @@ namespace BollingerNewVers
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            monitoring.Add(textBox1.Text.ToString());
+            BollingerSpotMarket.Telegram.AddOrderForMonitoring(textBox1.Text.ToString());
             textBox1.Text = "";
         }
         async void  AddAllOrders()
@@ -219,13 +150,8 @@ namespace BollingerNewVers
             
             foreach (var item in allPares.symbols)
             {
-               
-
                 if (allOrders.ContainsKey(item.quoteAsset.ToString()))
-                {
-                    //orders= allOrders[item.quoteAsset.ToString()];
-                    //orders.Add(item.symbol.ToString());
-                    //allOrders[item.quoteAsset.ToString()]= orders;
+                {                    
                     allOrders[item.quoteAsset.ToString()].Add(item.symbol.ToString());
                 }
                 else
@@ -233,9 +159,8 @@ namespace BollingerNewVers
                     List<string> orders = new List<string>();
                     orders.Add(item.symbol.ToString());
                     allOrders.Add(item.quoteAsset.ToString(), orders);
-                }
-                
+                }                
             }
         }        
-    }
+    }    
 }
