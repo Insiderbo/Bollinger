@@ -24,3 +24,4 @@ D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNew
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.application
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.exe
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.pdb
+D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.AssemblyReference.cache

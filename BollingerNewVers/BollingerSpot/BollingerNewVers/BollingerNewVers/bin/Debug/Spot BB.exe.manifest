@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Spot BB.exe" version="1.0.0.22" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Spot BB.exe" version="1.0.0.23" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="binance_icon_146221.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -55,26 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-<<<<<<< HEAD
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spot BB.exe" size="40880">
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spot BB.exe" size="40368">
->>>>>>> bc018abb11db88cef42a60e41d3a9af049fb8488
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spot BB.exe" size="41904">
       <assemblyIdentity name="Spot BB" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-        <dsig:DigestValue>eERBvVlA5T3yWcY2XdcbsQTtysxKFk84xvKdqJfb3Us=</dsig:DigestValue>
-=======
-<<<<<<< HEAD
-        <dsig:DigestValue>Y9nWmzQ4U30GBsrjg8TCbSB6tq59BM3fphsnfRgqyNw=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>ljKmR1nrp1YIG36chxGUFTWhvGurDX6OW8zsRcHWJdw=</dsig:DigestValue>
->>>>>>> da7d46cb49c599db41e7b29b0433002b5fe11f7a
->>>>>>> bc018abb11db88cef42a60e41d3a9af049fb8488
+        <dsig:DigestValue>cQuPaa+KCXxQOyLRFUp5PUkbEWKEsb979vmOWKJ8654=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

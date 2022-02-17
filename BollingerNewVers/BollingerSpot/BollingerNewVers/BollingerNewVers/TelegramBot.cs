@@ -18,13 +18,12 @@ namespace BollingerSpotMarket
         {
             resalt.Clear();
             monitoring.Clear();
+            controlavg.Clear();
         }
-
         static public void AddOrderForMonitoring(string order)
         {            
             monitoring.Add(order);
         }
-
         static public void IndexForTelegramm(string para, Dictionary<string, double> indicators, Dictionary<string, string> prozents, Dictionary<string, bool> checkBoxs)
         {
             if (resalt.Contains(para) == false)
@@ -35,7 +34,7 @@ namespace BollingerSpotMarket
                     TelegramBot(args);
                     resalt.Add(para);
                 }
-                else if (indicators["lastprice"] > indicators["upproc"] && checkBoxs["checkBox1"] == true)
+                 if (indicators["lastprice"] > indicators["upproc"] && checkBoxs["checkBox1"] == true)
                 {
 
                     var args = "UP ==->  " + prozents["comboBox4"] + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(indicators["lastprice"], 8).ToString();
@@ -58,7 +57,7 @@ namespace BollingerSpotMarket
                     var arg = "MONITORING " + "\n" + "DOWN ==-> " + prozents["comboBox3"] + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(indicators["lastprice"], 8).ToString();
                     TelegramBotRepuschae(arg);
                 }
-                else if (indicators["lastprice"] > indicators["upproc"])
+                if (indicators["lastprice"] > indicators["upproc"])
                 {
                     var arg = "MONITORING " + "\n" + "UP ==->  " + prozents["comboBox4"] + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(indicators["lastprice"], 8).ToString();
                     TelegramBotRepuschae(arg);
@@ -75,8 +74,7 @@ namespace BollingerSpotMarket
                     controlavg.Remove(para);
                 }
             }
-
-            if (indicators["lastprice"] < indicators["down"])
+           else if (indicators["lastprice"] < indicators["down"])
             {
                 controlavg.Add(para);
             }
@@ -91,7 +89,7 @@ namespace BollingerSpotMarket
         {
             await botClient.SendTextMessageAsync(chatId: chatId, text: args);
         }
-        static async Task TelegramBotRepuschae(string arg)
+        public static  async Task TelegramBotRepuschae(string arg)
         {
             botClient = new TelegramBotClient("5059700101:AAGpy77Pjg_vmX4aVSXYyS4oa00U_cyEMOA");
             var chat_id = -1001714789241;
