@@ -26,7 +26,7 @@ namespace BollingerSpotMarket
         {
             monitoring.Add(order);
         }
-        static public void IndexForTelegramm(string para, Dictionary<string, double> indicators)
+        async static public Task IndexForTelegramm(string para, Dictionary<string, double> indicators)
         {
             if (resalt.Contains(para) == false)
             {

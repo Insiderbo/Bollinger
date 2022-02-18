@@ -126,7 +126,7 @@ namespace BollingerNewVers
 
             if (upproc != double.NaN && downproc != double.NaN)
             {
-                BollingerSpotMarket.Telegram.IndexForTelegramm(para,
+               await BollingerSpotMarket.Telegram.IndexForTelegramm(para,
                     new Dictionary<string, double>()
                     {
                         {"average", average },
