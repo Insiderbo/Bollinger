@@ -33,7 +33,7 @@ namespace BollingerNewVers
         private async void CycleWork()
         {
             while (true)
-            {                   
+            {
                 if (comboBox1.Text == "")
                 {
                     MessageBox.Show("No order");
@@ -43,7 +43,17 @@ namespace BollingerNewVers
                 {
                     MessageBox.Show("No period");
                     return;
-                }                
+                }
+                BollingerSpotMarket.Telegram.prozents = new Dictionary<string, string>() {
+                        {"comboBox3", comboBox3.Text},
+                        {"comboBox4", comboBox4.Text},
+                        {"comboBox5", comboBox5.Text}
+                    };
+                BollingerSpotMarket.Telegram.checkBoxs = new Dictionary<string, bool>()
+                    {
+                        {"checkBox1", checkBox1.Checked},
+                        {"checkBox2", checkBox2.Checked}
+                    };
                 namePara = comboBox1.Text;
                 period = Convert.ToInt32(comboBox2.Text);
                 button1.Enabled = false;
@@ -131,15 +141,6 @@ namespace BollingerNewVers
                         {"lastprice", lastprice },
                         {"openPrice", openPrice },
                         {"closePrice", closePrice }
-                    },
-                    new Dictionary<string, string>() {
-                        {"comboBox3", comboBox3.Text},
-                        {"comboBox4", comboBox4.Text}
-                    },
-                    new Dictionary<string, bool>()
-                    {
-                        {"checkBox1", checkBox1.Checked},
-                        {"checkBox2", checkBox2.Checked}
                     });
             }
         }
