@@ -127,8 +127,8 @@ namespace BollingerNewVers
                     },
                     new Dictionary<string, bool>()
                     {
-                        {"checkBox1", checkBox1.Enabled},
-                        {"checkBox2", checkBox2.Enabled}
+                        {"checkBox1", checkBox1.Checked},
+                        {"checkBox2", checkBox2.Checked}
                     });
 
             }

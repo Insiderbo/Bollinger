@@ -25,3 +25,30 @@ D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNew
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.exe
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.pdb
 D:\GitHub\Bollinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.AssemblyReference.cache
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Spot BB.exe.config
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Spot BB.exe.manifest
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Spot BB.application
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Spot BB.exe
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Spot BB.pdb
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Telegram.Bot.dll
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\websocket-sharp.dll
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Telegram.Bot.pdb
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\Telegram.Bot.xml
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\bin\Debug\websocket-sharp.xml
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.AssemblyReference.cache
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.SuggestedBindingRedirects.cache
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerNewVers.Form1.resources
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.Properties.Resources.resources
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.GenerateResource.cache
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.CoreCompileInputs.cache
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.exe.manifest
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.application
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\BollingerSpotMarket.csproj.CopyComplete
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.exe
+D:\GitHub\Bolinger\BollingerNewVers\BollingerSpot\BollingerNewVers\BollingerNewVers\obj\Debug\Spot BB.pdb
