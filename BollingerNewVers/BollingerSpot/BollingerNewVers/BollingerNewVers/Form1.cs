@@ -102,26 +102,36 @@ namespace BollingerNewVers
                 totalSquares += Math.Pow(Math.Round(closePrice, 8), 2);//возводим в квадрат средние цены закрытия
             }
 
-            Dictionary<string, double> indicators = new Dictionary<string, double>(12);
-            indicators.Add("average", totalAverage / allOrder.Count);
-            indicators.Add("stdev", Math.Sqrt((totalSquares - Math.Pow(totalAverage, 2) / allOrder.Count) / allOrder.Count));
-            indicators.Add("up", indicators["average"] + 2 * indicators["stdev"]);
-            indicators.Add("down", indicators["average"] - 2 * indicators["stdev"]);
-            indicators.Add("bandWidth", (indicators["up"] - indicators["stdev"]) / indicators["average"]);
-            indicators.Add("procup", 1 + double.Parse(comboBox4.Text) / 100);
-            indicators.Add("upproc", Math.Round(indicators["up"] * indicators["procup"], 8));
-            indicators.Add("procdown", 1 + double.Parse(comboBox3.Text) / 100);
-            indicators.Add("downproc", Math.Round((indicators["down"] / indicators["procdown"]), 8));
-            indicators.Add("lastprice", lastprice);
-            indicators.Add("openPrice", openPrice);
-            indicators.Add("closePrice", closePrice);
+            double average = totalAverage / allOrder.Count;
+            double stdev = Math.Sqrt((totalSquares - Math.Pow(totalAverage, 2) / allOrder.Count) / allOrder.Count);
+            double up = average + 2 * stdev;
+            double down = average - 2 * stdev;
+            double bandWidth = (up - down) / average;
+            double procup = 1 + double.Parse(comboBox4.Text) / 100;
+            double upproc = Math.Round((up * procup), 8);
+            double procdown = 1 + double.Parse(comboBox3.Text) / 100;
+            double downproc = Math.Round((down / procdown), 8);
 
             label1.Text = "Pair " + para;
 
-            if (indicators["upproc"] != double.NaN && indicators["downproc"] != double.NaN)
+            if (upproc != double.NaN && downproc != double.NaN)
             {
                 BollingerSpotMarket.Telegram.IndexForTelegramm(para,
-                    indicators,
+                    new Dictionary<string, double>()
+                    {
+                        {"average", average },
+                        {"stdev", stdev },
+                        {"up", up },
+                        {"down", down},
+                        {"bandWidth", bandWidth },
+                        {"procup", procup},
+                        {"upproc", upproc },
+                        {"procdown", procdown },
+                        {"downproc", downproc },
+                        {"lastprice", lastprice },
+                        {"openPrice", openPrice },
+                        {"closePrice", closePrice }
+                    },
                     new Dictionary<string, string>() {
                         {"comboBox3", comboBox3.Text},
                         {"comboBox4", comboBox4.Text}
