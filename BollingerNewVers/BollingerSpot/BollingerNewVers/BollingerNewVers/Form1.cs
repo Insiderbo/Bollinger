@@ -23,7 +23,6 @@ namespace BollingerNewVers
         }
 
         private void button1_Click(object sender, EventArgs e)
-
         {
             CycleWork();
             comboBox1.Enabled = false;
@@ -84,12 +83,13 @@ namespace BollingerNewVers
             double totalSquares = 0;
             double lastprice = 0;
             double openPrice = 0;
+            double closePrice = 0;
+
             try
             {
                 dynamic www = await LoadUrlAsText($"https://api.binance.com/api/v3/ticker/price?symbol={para}");
                 dynamic lastPare = JsonConvert.DeserializeObject(www);
                 lastprice = (Convert.ToDouble(lastPare.price));
-
             }
             catch { }
 
@@ -97,12 +97,12 @@ namespace BollingerNewVers
             foreach (dynamic item in allOrder)
             {
                 openPrice = (Convert.ToDouble(item[1]));//[JSON].[0].[1]
-                double closePrice = (Convert.ToDouble(item[4]));
+                closePrice = (Convert.ToDouble(item[4]));
                 totalAverage += closePrice;//итоговая цена
                 totalSquares += Math.Pow(Math.Round(closePrice, 8), 2);//возводим в квадрат средние цены закрытия
             }
 
-            Dictionary<string, double> indicators = new Dictionary<string, double>(10);
+            Dictionary<string, double> indicators = new Dictionary<string, double>(12);
             indicators.Add("average", totalAverage / allOrder.Count);
             indicators.Add("stdev", Math.Sqrt((totalSquares - Math.Pow(totalAverage, 2) / allOrder.Count) / allOrder.Count));
             indicators.Add("up", indicators["average"] + 2 * indicators["stdev"]);
@@ -113,9 +113,10 @@ namespace BollingerNewVers
             indicators.Add("procdown", 1 + double.Parse(comboBox3.Text) / 100);
             indicators.Add("downproc", Math.Round((indicators["down"] / indicators["procdown"]), 8));
             indicators.Add("lastprice", lastprice);
+            indicators.Add("openPrice", openPrice);
+            indicators.Add("closePrice", closePrice);
 
             label1.Text = "Pair " + para;
-
 
             if (indicators["upproc"] != double.NaN && indicators["downproc"] != double.NaN)
             {
@@ -130,7 +131,6 @@ namespace BollingerNewVers
                         {"checkBox1", checkBox1.Checked},
                         {"checkBox2", checkBox2.Checked}
                     });
-
             }
         }
         private void button2_Click(object sender, EventArgs e)
@@ -165,14 +165,12 @@ namespace BollingerNewVers
                     allOrders.Add(item.quoteAsset.ToString(), orders);
                 }                
             }
-
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             var arg = "Test bot";
             BollingerSpotMarket.Telegram.TelegramBotRepuschae(arg);
-
         }
     }
 }
