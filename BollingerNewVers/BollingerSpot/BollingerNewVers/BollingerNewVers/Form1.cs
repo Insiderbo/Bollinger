@@ -102,8 +102,7 @@ namespace BollingerNewVers
                 totalSquares += Math.Pow(Math.Round(closePrice, 8), 2);//возводим в квадрат средние цены закрытия
             }
 
-            Dictionary<string, double> indicators = new Dictionary<string, double>();
-
+            Dictionary<string, double> indicators = new Dictionary<string, double>(10);
             indicators.Add("average", totalAverage / allOrder.Count);
             indicators.Add("stdev", Math.Sqrt((totalSquares - Math.Pow(totalAverage, 2) / allOrder.Count) / allOrder.Count));
             indicators.Add("up", indicators["average"] + 2 * indicators["stdev"]);
