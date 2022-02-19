@@ -32,14 +32,14 @@ namespace BollingerSpotMarket
             {
                 if (indicators["lastprice"] < indicators["downproc"] && checkBoxs["checkBox2"] == true)
                 {
-                    var args = "DOWN ==-> " + prozents["comboBox3"] + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
+                    var args = "Possibly Long ==-> " + prozents["comboBox3"] + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
                     TelegramBot(args);
                     resalt.Add(para);
                     controlavg.Add(para);
                 }
                 if (indicators["lastprice"] > indicators["upproc"] && checkBoxs["checkBox1"] == true)
                 {
-                    var args = "UP ==->  " + prozents["comboBox4"] + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
+                    var args = "Possibly Short ==->  " + prozents["comboBox4"] + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
                     TelegramBot(args);
                     resalt.Add(para);
                 }
@@ -53,12 +53,12 @@ namespace BollingerSpotMarket
             {
                 if (indicators["lastprice"] < indicators["downproc"])
                 {
-                    var arg = "MONITORING " + "\n" + "DOWN ==-> " + prozents["comboBox3"] + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
+                    var arg = "Observed Coins " + "\n" + "Possibly Long ==-> " + prozents["comboBox3"] + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
                     TelegramBotRepuschae(arg);
                 }
                 if (indicators["lastprice"] > indicators["upproc"])
                 {
-                    var arg = "MONITORING " + "\n" + "UP ==->  " + prozents["comboBox4"] + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
+                    var arg = "Observed Coins " + "\n" + "Possibly Short ==->  " + prozents["comboBox4"] + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
                     TelegramBotRepuschae(arg);
 
                 }
@@ -68,7 +68,7 @@ namespace BollingerSpotMarket
             {
                 if (indicators["lastprice"] > indicators["down"] && indicators["closePrice"] > indicators["openPrice"])
                 {
-                    var arg = "PUMP ==->  " + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
+                    var arg = "Perhaps a pump ==->  " + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
                     TelegramBotRepuschae(arg);
                     controlavg.Remove(para);
                 }

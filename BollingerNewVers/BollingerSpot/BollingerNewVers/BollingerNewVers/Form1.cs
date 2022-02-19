@@ -179,7 +179,7 @@ namespace BollingerNewVers
 
         private async void button4_Click(object sender, EventArgs e)
         {
-            var arg = "Test bot";
+           var arg = "Test bot";
            await BollingerSpotMarket.Telegram.TelegramBotRepuschae(arg);
         }
     }
