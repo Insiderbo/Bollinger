@@ -44,12 +44,12 @@ namespace BollingerNewVers
                     MessageBox.Show("No period");
                     return;
                 }
-                BollingerSpotMarket.Telegram.prozents = new Dictionary<string, string>() {
+                 BollingerSpotMarket.Telegram.prozents = new Dictionary<string, string>() {
                         {"comboBox3", comboBox3.Text},
                         {"comboBox4", comboBox4.Text},
                         {"comboBox5", comboBox5.Text}
                     };
-                BollingerSpotMarket.Telegram.checkBoxs = new Dictionary<string, bool>()
+                 BollingerSpotMarket.Telegram.checkBoxs = new Dictionary<string, bool>()
                     {
                         {"checkBox1", checkBox1.Checked},
                         {"checkBox2", checkBox2.Checked}
@@ -178,10 +178,10 @@ namespace BollingerNewVers
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private async void button4_Click(object sender, EventArgs e)
         {
             var arg = "Test bot";
-            BollingerSpotMarket.Telegram.TelegramBotRepuschae(arg);
+           await BollingerSpotMarket.Telegram.TelegramBotRepuschae(arg);
         }
     }
 }

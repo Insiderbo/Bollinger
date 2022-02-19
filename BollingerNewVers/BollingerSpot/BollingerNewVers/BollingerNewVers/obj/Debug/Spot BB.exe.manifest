@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spot BB.exe" size="42928">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spot BB.exe" size="43440">
       <assemblyIdentity name="Spot BB" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EXsbLfAljCLGshBbP2mDcAtcZ3a3k0O/9sd+xBN3iTc=</dsig:DigestValue>
+        <dsig:DigestValue>6+EFL+oC+PQ6OvDOnLB1Kvh0RbFK4hfaQ162jT6kzfI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
