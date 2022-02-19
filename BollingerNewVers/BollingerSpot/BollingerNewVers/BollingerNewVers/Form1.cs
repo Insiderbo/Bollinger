@@ -12,7 +12,7 @@ namespace BollingerNewVers
     public partial class Form1 : Form
     {
         private string namePara;
-        private int period; 
+        private int period;
 
         Dictionary<string, List<string>> allOrders = new Dictionary<string, List<string>>();
 
@@ -85,7 +85,6 @@ namespace BollingerNewVers
             label3.Text = allOrders[namePara].Count.ToString();
 
             string intervals = comboBox5.Text.ToString();
-
             dynamic d = await LoadUrlAsText($"https://api.binance.com/api/v1/klines?symbol={para}&interval={intervals}&limit=21");
             dynamic allOrder = JsonConvert.DeserializeObject(d);
 
@@ -126,22 +125,22 @@ namespace BollingerNewVers
 
             if (upproc != double.NaN && downproc != double.NaN)
             {
-               await BollingerSpotMarket.Telegram.IndexForTelegramm(para,
-                    new Dictionary<string, double>()
-                    {
-                        {"average", average },
-                        {"stdev", stdev },
-                        {"up", up },
-                        {"down", down},
-                        {"bandWidth", bandWidth },
-                        {"procup", procup},
-                        {"upproc", upproc },
-                        {"procdown", procdown },
-                        {"downproc", downproc },
-                        {"lastprice", lastprice },
-                        {"openPrice", openPrice },
-                        {"closePrice", closePrice }
-                    });
+                await BollingerSpotMarket.Telegram.IndexForTelegramm(para,
+                     new Dictionary<string, double>()
+                     {
+                    {"average", average },
+                    {"stdev", stdev },
+                    {"up", up },
+                    {"down", down},
+                    {"bandWidth", bandWidth },
+                    {"procup", procup},
+                    {"upproc", upproc },
+                    {"procdown", procdown },
+                    {"downproc", downproc },
+                    {"lastprice", lastprice },
+                    {"openPrice", openPrice },
+                    {"closePrice", closePrice }
+                     });
             }
         }
         private void button2_Click(object sender, EventArgs e)
