@@ -93,7 +93,8 @@ namespace BollingerNewVers
             double lastprice = 0;
             double openPrice = 0;
             double closePrice = 0;
-
+            double сlosedOpen = Convert.ToDouble(allOrder[19][1]);//[JSON].[19].[1] Open
+            double сlosedClouse = Convert.ToDouble(allOrder[19][4]);//[JSON].[19].[4] Clouse
             try
             {
                 dynamic www = await LoadUrlAsText($"https://api.binance.com/api/v3/ticker/price?symbol={para}");
@@ -139,7 +140,9 @@ namespace BollingerNewVers
                     {"downproc", downproc },
                     {"lastprice", lastprice },
                     {"openPrice", openPrice },
-                    {"closePrice", closePrice }
+                    {"closePrice", closePrice },
+                    {"сlosedOpen",сlosedOpen },
+                    {"сlosedClouse", сlosedClouse }
                      });
             }
         }

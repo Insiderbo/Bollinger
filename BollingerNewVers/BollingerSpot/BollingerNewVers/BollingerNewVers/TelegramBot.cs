@@ -66,7 +66,7 @@ namespace BollingerSpotMarket
 
             if (controlavg.Contains(para) == true)
             {
-                if (indicators["lastprice"] > indicators["down"] && indicators["closePrice"] > indicators["openPrice"])
+                if (indicators["lastprice"] > indicators["down"] && indicators["сlosedClouse"] > indicators["сlosedOpen"])
                 {
                     var arg = "Perhaps a pump ==->  " + para.ToString() + "\n" + "Price ==-> " + Math.Round(indicators["lastprice"], 8).ToString() + "\n" + "Period ==-> " + prozents["comboBox5"];
                     TelegramBotRepuschae(arg);
