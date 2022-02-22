@@ -94,6 +94,9 @@ namespace BollingerNewVers
             double totalAverage = 0;
             double totalSquares = 0;
             double lastprice = 0;
+            double highprice = 0;
+            double lowprice = 0;
+
 
             try
             {
@@ -106,6 +109,8 @@ namespace BollingerNewVers
             //[JSON].[0].[4]
             foreach (dynamic item in allOrder)
             {
+                highprice = (Convert.ToDouble(item[2]));
+                lowprice = (Convert.ToDouble(item[3]));
                 double closePrice = (Convert.ToDouble(item[4]));
                 totalAverage += closePrice;//итоговая цена
                 totalSquares += Math.Pow(Math.Round(closePrice, 8), 2);//возводим в квадрат средние цены закрытия
@@ -121,29 +126,36 @@ namespace BollingerNewVers
             double procdown = 1+double.Parse(comboBox3.Text)/100;
             double downproc = Math.Round((down / procdown),8);
 
-            label1.Text = "Pair " + para + "\n" + "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down + "\n" + "Last Price " + lastprice;
+            label1.Text = "Pair " + para + "\n" + "UP " + up + "\n" + "AVG " + average + "\n" + "DOWN " + down
+                + "\n" + "Last Price " + lastprice + "\n" + "High Price " + highprice + "\n" + "Low Price " + lowprice;
             //label1.Text = "Pair " + para;
 
             if (upproc != double.NaN && downproc != double.NaN)
             {
-                Telegramm(para, upproc, downproc, lastprice);
+                Telegramm(para, upproc, downproc, lastprice, highprice, lowprice);
             }
         }
-        void Telegramm(string para, double upproc, double downproc, double lastprice)
+        void Telegramm(string para, double upproc, double downproc, double lastprice, double highprice, double lowprice)
         {
-            if (lastprice < downproc && downcoin.Contains(para) == false && checkBox2.Checked == true)
+            if (lastprice < downproc || lowprice < downproc)
             {
-               var args = "DOWN ==-> " + comboBox3.Text.ToString()+ " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice,8).ToString();
-               TelegramBot(args);
-                downcoin.Add(para);
+                if (downcoin.Contains(para) == false && checkBox2.Checked == true)
+                {
+                    var args = "DOWN ==-> " + comboBox3.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                    TelegramBot(args);
+                    downcoin.Add(para);
+                }
             }
             else
             {
-                if (lastprice > upproc && upcoin.Contains(para) == false && checkBox1.Checked == true)
+                if (highprice > upproc || lastprice > upproc)
                 {
-                    var args = "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
-                    TelegramBot(args);
-                    upcoin.Add(para);
+                    if (upcoin.Contains(para) == false && checkBox1.Checked == true)
+                    {
+                        var args = "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                        TelegramBot(args);
+                        upcoin.Add(para);
+                    }
                 }
             }
             if (lastprice > downproc && lastprice < upproc)

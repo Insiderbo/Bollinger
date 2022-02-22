@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Future BB.exe" version="1.0.0.24" publicKeyToken="b8c924c0e4e66b60" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Spot BB.exe" version="1.0.0.32" publicKeyToken="b8c924c0e4e66b60" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="binance_icon_146221.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Future BB" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-    <commandLine file="Future BB.exe" parameters="" />
+    <assemblyIdentity name="Spot BB" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Spot BB.exe" parameters="" />
   </entryPoint>
   <trustInfo>
     <security>
@@ -43,18 +43,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Future BB.exe" size="35760">
-      <assemblyIdentity name="Future BB" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>B4Dz1PiGxXZMZers/bRaORvEmqLycGDYrGgiwcpQY0c=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="701992">
       <assemblyIdentity name="Newtonsoft.Json" version="13.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -63,6 +51,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>tiSUnfiw46YVP9+3MKfG9JkLZZLuDZIuF4hDPSdmEPM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spot BB.exe" size="44464">
+      <assemblyIdentity name="Spot BB" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>XL5Qxnaxr3OkePtYIltrW9DAyXEMzPX4hEaA9dSQcos=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -123,7 +123,7 @@
       <dsig:DigestValue>464W7qyygkGzBj8f+FsZ9rFgtlHBPgCngdxD1Tgcqwk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Future BB.exe.config" size="544">
+  <file name="Spot BB.exe.config" size="544">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -132,4 +132,4 @@
       <dsig:DigestValue>dBuLcGJZURn7vOGj6aC8JWz8FXkDBNEz5xXQkJL4Dio=</dsig:DigestValue>
     </hash>
   </file>
-<publisherIdentity name="CN=lan\insiderbo" issuerKeyHash="15963f754e22cc70dca582ef4bf790845d3b3310" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>vUgy4PeRmtNY/mBAxmRgbBGFWDSJmiiRRHZg+44d4TQ=</DigestValue></Reference></SignedInfo><SignatureValue>mv1nl5o0EoyrCUwjGWXx/RSHGgEnORZxtVwVe1ZprVgONmLME/SDWvIUqKH3w7DAZbybbmJA+GViGEcD0uekJULY1dOlpJRNxYJcdmb2XwMtqvIJcUXPxsJYkDIb3CDlKWzR00DwbEEzD1uqP981PRVA2ThlB1GIoJ/vcX+3s4I=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>x+plvxRbtaL66E3y0y0YOTgJhaQS4aAN2/eHlP/AyBfybFtyiSs0PJE064RdIWKovU+tnDPoj4dPMU+Qhmft1NDtQ9RoDbjZIc0WlgwOmyGF+5zQ+3qQKGLe1Z5Od57Wa/zWycfLSX2qgPMkKBDSnlnTZDxJpiz9sbMe71p/05E=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="34e11d8efb60764491289a89345885116c6064c64060fe58d39a91f7e03248bd" Description="" Url=""><as:assemblyIdentity name="Future BB.exe" version="1.0.0.24" publicKeyToken="b8c924c0e4e66b60" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=lan\insiderbo</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>XJBYcd0sf7cT2OGCxKpEO5oBdpFy2fBZnZrFfflcqgU=</DigestValue></Reference></SignedInfo><SignatureValue>a5hu1RqmyBIgcTJmjH+o3XAMz032Cq0RQJVIAyl9wX0KJITaBz2WFN+kYkrUenF9sMIpsdgfJg8oukOWDW0OjT24eEO3biCeyNspvlhcibTsrP4BcGRX68PCYfdDypWFhfEp8bFNjA/2Ylj+DUryA7u/rEeUK3bjMBlHOitmJEo=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>x+plvxRbtaL66E3y0y0YOTgJhaQS4aAN2/eHlP/AyBfybFtyiSs0PJE064RdIWKovU+tnDPoj4dPMU+Qhmft1NDtQ9RoDbjZIc0WlgwOmyGF+5zQ+3qQKGLe1Z5Od57Wa/zWycfLSX2qgPMkKBDSnlnTZDxJpiz9sbMe71p/05E=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQFgBhwpZsYZVO0RdxM3FLhjANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDHhoAbABhAG4AXABpAG4AcwBpAGQAZQByAGIAbzAeFw0yMjAyMDQyMDE4MTdaFw0yMzAyMDUwMjE4MTdaMCUxIzAhBgNVBAMeGgBsAGEAbgBcAGkAbgBzAGkAZABlAHIAYgBvMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDH6mW/FFu1ovroTfLTLRg5OAmFpBLhoA3b94eU/8DIF/JsW3KJKzQ8kTTrhF0hYqi9T62cM+iPh08xT5CGZ+3U0O1D1GgNuNkhzRaWDA6bIYX7nND7epAoYt7Vnk53ntZr/NbJx8tJfaqA8yQoENKeWdNkPEmmLP2xsx7vWn/TkQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAK9tXWTIJFB+Uc5uzijLtBjUaS1ru3fV2fqz9S1ratIV3zjvX7Vqc0N+EQQ72mxP9imytxCuPe/84t9IR9OJZJRan09mNxAKV+kpmpcWHhooA812Fc/0FKTi4Yb/gf7OXy+YejxQq4K/JrKZ/hCErNGwtkIo7jyZfcWCe3td0CAP</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+<publisherIdentity name="CN=lan\insiderbo" issuerKeyHash="15963f754e22cc70dca582ef4bf790845d3b3310" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>3UNGjGA31VIhj5dq1JPwBcFIV0ry2n1RfTXyEevLPQY=</DigestValue></Reference></SignedInfo><SignatureValue>Xs3VuWyugW+wAwf8Fvz4Rqa61RCmlZYd2ufimTAkIROPIVIVdEVyYnxstfM3eErCVWMMe2e+HPVYD41RLGosF64TYbSC8YW9VFHQX7O4Q38JZRIcWLupMSIHaNGOotlixTmZDXdqlo6O9FLE6zxmTlYGajuvSWW7veawCrnmmq0=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>x+plvxRbtaL66E3y0y0YOTgJhaQS4aAN2/eHlP/AyBfybFtyiSs0PJE064RdIWKovU+tnDPoj4dPMU+Qhmft1NDtQ9RoDbjZIc0WlgwOmyGF+5zQ+3qQKGLe1Z5Od57Wa/zWycfLSX2qgPMkKBDSnlnTZDxJpiz9sbMe71p/05E=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="063dcbeb11f2357d517ddaf24a5748c105f093d46a978f2152d537608c4643dd" Description="" Url=""><as:assemblyIdentity name="Spot BB.exe" version="1.0.0.32" publicKeyToken="b8c924c0e4e66b60" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=lan\insiderbo</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>odUjBWij6NCwZYo4S/lBGC1AQ9r2QZ9NNtys00KR0e0=</DigestValue></Reference></SignedInfo><SignatureValue>WZrKP2s9g9ufgaMDMBFTb5pfQsRI0P2qRtIRds6jXuATdJRbE0qjGCyQjxPmAgouQAotfsMg8rQ+qJbd4jskXn7rZsdmVWfBhjDQ6pr7vQeTZyJzx1+wUVljSZgUYAmKTdbv9nijUz2/WpKV24KCmSEGOZqDcNQVRJ1q8+6hKLA=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>x+plvxRbtaL66E3y0y0YOTgJhaQS4aAN2/eHlP/AyBfybFtyiSs0PJE064RdIWKovU+tnDPoj4dPMU+Qhmft1NDtQ9RoDbjZIc0WlgwOmyGF+5zQ+3qQKGLe1Z5Od57Wa/zWycfLSX2qgPMkKBDSnlnTZDxJpiz9sbMe71p/05E=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQFgBhwpZsYZVO0RdxM3FLhjANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDHhoAbABhAG4AXABpAG4AcwBpAGQAZQByAGIAbzAeFw0yMjAyMDQyMDE4MTdaFw0yMzAyMDUwMjE4MTdaMCUxIzAhBgNVBAMeGgBsAGEAbgBcAGkAbgBzAGkAZABlAHIAYgBvMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDH6mW/FFu1ovroTfLTLRg5OAmFpBLhoA3b94eU/8DIF/JsW3KJKzQ8kTTrhF0hYqi9T62cM+iPh08xT5CGZ+3U0O1D1GgNuNkhzRaWDA6bIYX7nND7epAoYt7Vnk53ntZr/NbJx8tJfaqA8yQoENKeWdNkPEmmLP2xsx7vWn/TkQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAK9tXWTIJFB+Uc5uzijLtBjUaS1ru3fV2fqz9S1ratIV3zjvX7Vqc0N+EQQ72mxP9imytxCuPe/84t9IR9OJZJRan09mNxAKV+kpmpcWHhooA812Fc/0FKTi4Yb/gf7OXy+YejxQq4K/JrKZ/hCErNGwtkIo7jyZfcWCe3td0CAP</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

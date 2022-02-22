@@ -44,7 +44,7 @@ namespace BollingerSpotMarket
                     resalt.Add(para);
                 }
             }
-            else if (indicators["lastprice"] > indicators["downproc"] && indicators["lastprice"] < indicators["upproc"])
+            if (indicators["lastprice"] > indicators["downproc"] && indicators["lastprice"] < indicators["upproc"])
             {
                 resalt.Remove(para);
             }
