@@ -27,8 +27,8 @@ namespace BollingerNewVers
             CycleWork();
             comboBox1.Enabled = false;
             comboBox2.Enabled = false;
-            comboBox3.Enabled = false;
-            comboBox4.Enabled = false;
+            //comboBox3.Enabled = false;
+            //comboBox4.Enabled = false;
         }
         private async void CycleWork()
         {

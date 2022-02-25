@@ -146,16 +146,13 @@ namespace BollingerNewVers
                     downcoin.Add(para);
                 }
             }
-            else
+            if (highprice > upproc || lastprice > upproc)
             {
-                if (highprice > upproc || lastprice > upproc)
+                if (upcoin.Contains(para) == false && checkBox1.Checked == true)
                 {
-                    if (upcoin.Contains(para) == false && checkBox1.Checked == true)
-                    {
-                        var args = "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
-                        TelegramBot(args);
-                        upcoin.Add(para);
-                    }
+                    var args = "UP ==->  " + comboBox4.Text.ToString() + " % " + "\n" + para.ToString() + "\n" + "PRICE ==-> " + Math.Round(lastprice, 8).ToString();
+                    TelegramBot(args);
+                    upcoin.Add(para);
                 }
             }
             if (lastprice > downproc && lastprice < upproc)
@@ -164,15 +161,11 @@ namespace BollingerNewVers
                 {
                     downcoin.Remove(para);
                 }
-            }
-            if (lastprice < upproc)
-            {
                 if (upcoin.Contains(para) == true)
                 {
                     upcoin.Remove(para);
                 }
             }
-
         }
         static async Task TelegramBot(string args)
         {
