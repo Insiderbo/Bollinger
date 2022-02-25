@@ -14,6 +14,10 @@ namespace BollingerNewVers
         private string namePara;
         private int period;
 
+        public static double InterestUp;
+        public static double InterestDown;
+
+
         Dictionary<string, List<string>> allOrders = new Dictionary<string, List<string>>();
 
         public Form1()
