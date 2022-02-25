@@ -132,10 +132,10 @@ namespace BollingerNewVers
 
             if (upproc != double.NaN && downproc != double.NaN)
             {
-                Telegramm(para, upproc, downproc, lastprice, highprice, lowprice);
+                Telegramm(para, upproc, downproc, lastprice, highprice, lowprice, average);
             }
         }
-        void Telegramm(string para, double upproc, double downproc, double lastprice, double highprice, double lowprice)
+        void Telegramm(string para, double upproc, double downproc, double lastprice, double highprice, double lowprice, double average)
         {
             if (lastprice < downproc || lowprice < downproc)
             {
@@ -155,16 +155,13 @@ namespace BollingerNewVers
                     upcoin.Add(para);
                 }
             }
-            if (lastprice > downproc && lastprice < upproc)
+            if (downcoin.Contains(para) == true && lastprice > average)
             {
-                if (downcoin.Contains(para) == true)
-                {
-                    downcoin.Remove(para);
-                }
-                if (upcoin.Contains(para) == true)
-                {
-                    upcoin.Remove(para);
-                }
+                downcoin.Remove(para);
+            }
+            if (upcoin.Contains(para) == true && lastprice < average)
+            {
+                upcoin.Remove(para);
             }
         }
         static async Task TelegramBot(string args)
