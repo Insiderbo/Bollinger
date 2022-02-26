@@ -5,31 +5,31 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-class PaymentPara
+class DataPara
 {
-    double totalAverage = 0;
-    double totalSquares = 0;
-    double lastprice = 0;
-    double openPrice = 0;
-    double closePrice = 0;
+    public double totalAverage = 0;
+    public double totalSquares = 0;
+    public double lastprice = 0;
+    public double openPrice = 0;
+    public double closePrice = 0;
 
-    double average;
-    double stdev;
-    double up;
-    double down;
-    double bandWidth;
-    double procup;
-    double upproc;
-    double procdown;
-    double downproc;
+    public double average;
+    public double stdev;
+    public double up;
+    public double down;
+    public double bandWidth;
+    public double procup;
+    public double upproc;
+    public double procdown;
+    public double downproc;
 
-    double сlosedOpen;//[JSON].[19].[1] Open
-    double сlosedClouse;//[JSON].[19].[4] Clouse
+    public double сlosedOpen;//[JSON].[19].[1] Open
+    public double сlosedClouse;//[JSON].[19].[4] Clouse
 
 
-    async void ChecksRara(dynamic allOrder)
-    {       
-         //lastprice = (Convert.ToDouble(lastPare.price));        
+    public void СalculationsRara(dynamic allOrder)
+    {
+        //lastprice = (Convert.ToDouble(lastPare.price));        
 
         //[JSON].[0].[4]
         foreach (dynamic item in allOrder)
@@ -40,14 +40,14 @@ class PaymentPara
             totalSquares += Math.Pow(Math.Round(closePrice, 8), 2);//возводим в квадрат средние цены закрытия
         }
 
-        double average = totalAverage / allOrder.Count;
-        double stdev = Math.Sqrt((totalSquares - Math.Pow(totalAverage, 2) / allOrder.Count) / allOrder.Count);
-        double up = average + 2 * stdev;
-        double down = average - 2 * stdev;
-        double bandWidth = (up - down) / average;
-        double procup = 1 + BollingerNewVers.Form1.InterestUp / 100;        
-        double upproc = Math.Round((up * procup), 8);
-        double procdown = 1 + BollingerNewVers.Form1.InterestDown / 100;
-        double downproc = Math.Round((down / procdown), 8);
+        average = totalAverage / allOrder.Count;
+        stdev = Math.Sqrt((totalSquares - Math.Pow(totalAverage, 2) / allOrder.Count) / allOrder.Count);
+        up = average + 2 * stdev;
+        down = average - 2 * stdev;
+        bandWidth = (up - down) / average;
+        procup = 1 + BollingerNewVers.Form1.InterestUp / 100;
+        upproc = Math.Round((up * procup), 8);
+        procdown = 1 + BollingerNewVers.Form1.InterestDown / 100;
+        downproc = Math.Round((down / procdown), 8);
     }
-}    
+}
