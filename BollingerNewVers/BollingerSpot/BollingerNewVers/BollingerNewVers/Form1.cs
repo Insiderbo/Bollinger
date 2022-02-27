@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 namespace BollingerNewVers
 {
-
     public partial class Form1 : Form
     {
         private string namePara;
@@ -16,6 +15,10 @@ namespace BollingerNewVers
 
         public static double InterestUp;
         public static double InterestDown;
+
+        public static List<string> resalt = new List<string>();
+        public static List<string> monitoring = new List<string>();
+        public static List<string> controlavg = new List<string>();
 
 
         Dictionary<string, List<string>> allOrders = new Dictionary<string, List<string>>();
@@ -47,17 +50,7 @@ namespace BollingerNewVers
                 {
                     MessageBox.Show("No period");
                     return;
-                }
-                 BollingerSpotMarket.Telegram.prozents = new Dictionary<string, string>() {
-                        {"comboBox3", comboBox3.Text},
-                        {"comboBox4", comboBox4.Text},
-                        {"comboBox5", comboBox5.Text}
-                    };
-                 BollingerSpotMarket.Telegram.checkBoxs = new Dictionary<string, bool>()
-                    {
-                        {"checkBox1", checkBox1.Checked},
-                        {"checkBox2", checkBox2.Checked}
-                    };
+                }                
                 namePara = comboBox1.Text;
                 period = Convert.ToInt32(comboBox2.Text);
                 button1.Enabled = false;
@@ -108,29 +101,31 @@ namespace BollingerNewVers
 
             if (dataPara.upproc != double.NaN && dataPara.downproc != double.NaN)
             {
-                await BollingerSpotMarket.Telegram.IndexForTelegramm(para,
-                     new Dictionary<string, double>()
-                     {
-                    {"average", dataPara.average },
-                    {"stdev", dataPara.stdev },
-                    {"up", dataPara.up },
-                    {"down", dataPara.down},
-                    {"bandWidth", dataPara.bandWidth },
-                    {"procup", dataPara.procup},
-                    {"upproc", dataPara.upproc },
-                    {"procdown", dataPara.procdown },
-                    {"downproc", dataPara.downproc },
-                    {"lastprice", dataPara.lastprice },
-                    {"openPrice", dataPara.openPrice },
-                    {"closePrice", dataPara.closePrice },
-                    {"сlosedOpen",dataPara.сlosedOpen },
-                    {"сlosedClouse", dataPara.сlosedClouse }
-                     });
+                //await BollingerSpotMarket.Telegram.IndexForTelegramm(para,
+                //     new Dictionary<string, double>()
+                //     {
+                //    {"average", dataPara.average },
+                //    {"stdev", dataPara.stdev },
+                //    {"up", dataPara.up },
+                //    {"down", dataPara.down},
+                //    {"bandWidth", dataPara.bandWidth },
+                //    {"procup", dataPara.procup},
+                //    {"upproc", dataPara.upproc },
+                //    {"procdown", dataPara.procdown },
+                //    {"downproc", dataPara.downproc },
+                //    {"lastprice", dataPara.lastprice },
+                //    {"openPrice", dataPara.openPrice },
+                //    {"closePrice", dataPara.closePrice },
+                //    {"сlosedOpen",dataPara.сlosedOpen },
+                //    {"сlosedClouse", dataPara.сlosedClouse }
+                //     });
             }
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            BollingerSpotMarket.Telegram.ClearCheckedOrders();
+            resalt.Clear();
+            monitoring.Clear();
+            controlavg.Clear();
 
             button1.Enabled = true;
             comboBox1.Enabled = true;
@@ -140,7 +135,7 @@ namespace BollingerNewVers
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            BollingerSpotMarket.Telegram.AddOrderForMonitoring(textBox1.Text.ToString());
+            monitoring.Add(textBox1.Text.ToString());
             textBox1.Text = "";
         }
         async void  AddAllOrders()
