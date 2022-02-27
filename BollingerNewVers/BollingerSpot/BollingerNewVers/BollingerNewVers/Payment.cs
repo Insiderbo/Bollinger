@@ -61,7 +61,7 @@ class DataPara
     }
 
 
-    public string CheckingConditionsForAll(bool upCheck,bool downCheck)
+    public string CheckingConditionsForAll(bool upCheck, bool downCheck)
     {
         if (IsContainsInResalt == false)
         {
@@ -69,32 +69,33 @@ class DataPara
             {
                 BollingerNewVers.Form1.resalt.Add(para);
 
-                return "PRICE ==-> " + Math.Round(lastprice, 8).ToString() + "\n" +  "DOWN ==-> " ;
+                return "Possibly Long ==-> " + BollingerNewVers.Form1.InterestDown + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(lastprice, 8).ToString() + "\n";
 
             }
             if (lastprice > upproc && UpCheck == true)
             {
                 BollingerNewVers.Form1.resalt.Add(para);
-                return "PRICE ==-> " + Math.Round(lastprice, 8).ToString() + "\n" + "Possibly Short ==->  " ;
+                return "Possibly Short ==->  " + BollingerNewVers.Form1.InterestUp + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(lastprice, 8).ToString() + "\n" ;
             }
+            if (lastprice > downproc && lastprice < upproc)
+            {
+                BollingerNewVers.Form1.resalt.Remove(para);
+            }
+            return null;
         }
-        if (lastprice > downproc && lastprice < upproc)
-        {
-            BollingerNewVers.Form1.resalt.Remove(para);
-        }
-        return null;
     }
+
     public string CheckingConditionsForMe()
     {
         if (IsContainsInMonitoring == true)
         {
             if (lastprice < downproc)
             {
-                return "PRICE ==-> " + Math.Round(lastprice, 8).ToString() + "\n" + "Observed Coins " + "\n" + "Possibly Long ==-> ";
+                return "Observed Coins " + "\n" + "Possibly Long ==-> " + BollingerNewVers.Form1.InterestDown + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(lastprice, 8).ToString() + "\n";
             }
             if (lastprice > upproc)
             {
-                return Math.Round(lastprice, 8).ToString() + "\n" + "Observed Coins " + "\n" + "Possibly Short ==->  " ;
+                return "Observed Coins " + "\n" + "Possibly Short ==->  " + BollingerNewVers.Form1.InterestUp + " % " + "\n" + para.ToString() + "\n" + "Price ==-> " + Math.Round(lastprice, 8).ToString() + "\n";
             }
         }
 
@@ -104,8 +105,8 @@ class DataPara
             {
 
                 BollingerNewVers.Form1.controlavg.Remove(para);
-                return Math.Round(lastprice, 8).ToString() + "\n" + "Perhaps a pump ==->  ";
-                               
+                return "Perhaps a pump ==->  " + para.ToString() + "\n" + "Price ==-> " + Math.Round(lastprice, 8).ToString() + "\n" ;
+
             }
         }
         return null;

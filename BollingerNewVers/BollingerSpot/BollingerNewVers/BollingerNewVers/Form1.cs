@@ -101,24 +101,21 @@ namespace BollingerNewVers
 
             if (dataPara.upproc != double.NaN && dataPara.downproc != double.NaN)
             {
-                //await BollingerSpotMarket.Telegram.IndexForTelegramm(para,
-                //     new Dictionary<string, double>()
-                //     {
-                //    {"average", dataPara.average },
-                //    {"stdev", dataPara.stdev },
-                //    {"up", dataPara.up },
-                //    {"down", dataPara.down},
-                //    {"bandWidth", dataPara.bandWidth },
-                //    {"procup", dataPara.procup},
-                //    {"upproc", dataPara.upproc },
-                //    {"procdown", dataPara.procdown },
-                //    {"downproc", dataPara.downproc },
-                //    {"lastprice", dataPara.lastprice },
-                //    {"openPrice", dataPara.openPrice },
-                //    {"closePrice", dataPara.closePrice },
-                //    {"сlosedOpen",dataPara.сlosedOpen },
-                //    {"сlosedClouse", dataPara.сlosedClouse }
-                //     });
+                string message = dataPara.CheckingConditionsForAll(checkBox1.Enabled, checkBox2.Enabled);
+
+                if (message != null)
+                {
+                    BollingerSpotMarket.Telegram.TelegramBot(message + "Period ==-> " + comboBox5.Text); 
+                    message = null;
+                }
+
+                message = dataPara.CheckingConditionsForMe();
+
+                if (message != null)
+                {
+                    BollingerSpotMarket.Telegram.TelegramBotRepuschae(message + "Period ==-> " + comboBox5.Text);
+                }
+
             }
         }
         private void button2_Click(object sender, EventArgs e)
